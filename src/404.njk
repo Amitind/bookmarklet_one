@@ -1,0 +1,33 @@
+---
+layout: layouts/base.njk
+permalink: 404.html
+eleventyExcludeFromCollections: true
+---
+<!-- 404 section -->
+	<section class="bg-white py-10">
+		<div class="">
+			<div class="row">
+				<div class="w-full">
+					<div class="text-center">
+						<div
+						class="text-8xl h-[400px] bg-center bg-no-repeat bg-[url(/img/cave404.gif)]"
+						>
+							<h1 class="text-center text-8xl">404</h1>
+							{# {%- image "./src/img/cave404.gif", imgclass="h-[400px] mx-auto object-cover", widths=[null], formats=["webp"] %} #}
+
+						</div>
+
+						<div class="-mt-14">
+							<h3 class="h2">
+								Look like you're lost
+							</h3>
+
+							<p>the page you are looking for not avaible!</p>
+
+							<a href="/" class="bg-blue-700 text-gray-100 px-6 py-3 inline-block my-3">Go to Home</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>

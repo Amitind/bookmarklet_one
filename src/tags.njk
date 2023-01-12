@@ -1,0 +1,35 @@
+---
+pagination:
+  data: collections
+  size: 1
+  alias: tag
+  filter:
+    - all
+    - post
+    - posts
+    - tagList
+    - page
+    - pages
+  addAllPagesToCollections: true
+layout: layouts/base.njk
+eleventyComputed:
+  title: All Blog posts about “{{ tag }}”
+permalink: /tags/{{ tag | slugify }}/
+---
+	<div class="main-container  -mt-6 pt-6 bg-gray-100 ">
+		<div class="text-gray-700 px-5  py-10 text-center space-y-2"
+			>
+			<h1 class="text-3xl sm:text-4xl font-bold">Tagged: <span class="capitalize font-normal">“{{ tag }}”</span></h1>
+      {# <p>Select one tag to read articles on that topic.</p> #}
+		</div>
+
+	</div>
+
+{% set postslist = collections[ tag ] %}
+{% include "postslist.njk" %}
+
+<p class="w-full text-center py-16" >
+  <a
+  class="bg-blue-500 w-1/2 px-10 py-2.5 rounded-full text-white shadow-xl shadow-blue-100 font-heading uppercase font-semibold"
+  href="{{ '/tags/' | url }}">See all Tags</a>
+</p>

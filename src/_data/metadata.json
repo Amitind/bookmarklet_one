@@ -1,0 +1,29 @@
+{
+  "title": "Site Title",
+  "subtitle": "sub title",
+  "dir": "ltr",
+  "social": {
+    "fb":"",
+    "twitter":"",
+    "insta":"",
+    "email": "hi[at]example.com"
+  },
+  "url": "https://example.com/",
+  "locale": "en",
+  "description": "meta description",
+  "feed": {
+    "subtitle": "feed subtitle",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "id": "https://example.com/"
+  },
+  "jsonfeed": {
+    "path": "/feed/feed.json",
+    "url": "https://example.com/feed/feed.json"
+  },
+  "author": {
+    "name": "author name",
+    "email": "hi[at]example.com",
+    "url": "author/url"
+  }
+}

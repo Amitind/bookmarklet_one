@@ -1,0 +1,74 @@
+{# <ol reversed class="postlist" style="counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }}">
+{% for post in postslist | reverse %}
+  <li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
+
+    <a href="{{ post.url | url }}" class="postlist-link">{% if post.data.title %}{{ post.data.title }}{% else %}
+      <code>{{ post.url }}</code>
+      {% endif %}</a>
+    <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+
+    {% for tag in post.data.tags | filterTagList %}
+      {% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+      <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
+    {% endfor %}
+  </li>
+
+{% endfor %}
+</ol> #}
+
+<section class="postlist container my-10 mx-auto px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+  {% for post in postslist | reverse %}
+  <a href="{{ post.url | url }}" class="max-w-xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl shadow-gray-100" >
+	<div>
+
+        {% if post.data.featured_image %}
+        {% image post.data.featured_image, imgclass="object-cover w-full h-64" %}
+        {% else %}
+        {% image "./src/img/open-graph.png", imgclass="object-cover w-full h-64" %}
+        {% endif %}
+
+        <div class="p-6">
+            <div>
+              {# add tags list #}
+              <div class="space-x-2">
+              {% for tag in post.data.tags | filterTagList %}
+              {% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+              <span class="py-1 px-3 rounded-full uppercase text-xs shadow-xl shadow-blue-100 bg-blue-100 text-blue-500">{{ tag }}</span>
+               {% endfor %}
+                </div>
+
+                <h2 class="block mt-6 text-2xl font-bold text-gray-700">
+                  {% if post.data.title %}
+                  {{ post.data.title }}
+                  {% else %}
+                  <code>{{ post.url }}</code>
+                  {% endif %}
+                  </h2>
+                <p class="mt-2  text-gray-500  ">How to use the tool to get the most out of it.</p>
+            </div>
+
+        </div>
+    </div>
+    </a>
+  {% endfor %}
+</section>
+
+
+
+{# how to set and pass selectively number of posts to postlist to render #}
+
+{# {% include "partials/moretools.njk" %} #}
+
+{# demo #}
+{# <div class="bg-gray-200">
+{% set maxPosts = collections.posts.length | min(3) %}
+<h1>Latest {% if maxPosts == 1 %}Post{% else %}{{ maxPosts }} Posts{% endif %}</h1>
+
+{% set postslist = collections.posts | head(-3) %}
+{% set postslistCounter = collections.posts | length %}
+{% include "postslist.njk" %}
+
+<p>More posts can be found in <a href="{{ '/blog/' | url }}">the archive</a>.</p>
+</div> #}
+

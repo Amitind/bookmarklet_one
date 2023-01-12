@@ -1,0 +1,9 @@
+{
+  "tags": [
+    "pages"
+  ],
+  "layout": "layouts/page.njk",
+  "permalink": "/{{ page.fileSlug }}/",
+  "locale": "en",
+  "featured_image": "/img/open-graph.png"
+}

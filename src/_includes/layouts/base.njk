@@ -1,0 +1,115 @@
+<!doctype html>
+{# default local is "en" english if not set in front matter file or directory #}
+<html lang="{{ locale or metadata.locale }}" dir="{{dir or metadata.dir}}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Primary Meta Tags -->
+    <title>{{ title or metadata.title }}</title>
+    <meta name="description" content="{{ description or metadata.description }}">
+    <meta name="generator" content="{{ eleventy.generator }}">
+
+    {%- set canonicalUrl %}{{ page.url | url | absoluteUrl(metadata.url) }}{%- endset %}
+    {# image path should pe always should be correct #}
+    {%- set featuredImageUrl %}
+        {%- if featured_image -%}
+        {{ featured_image | url | absoluteUrl(metadata.url) }}
+        {%- else -%}
+        {{ "/img/open-graph.png" | url | absoluteUrl(metadata.url) }}
+        {%- endif -%}
+    {%- endset -%}
+
+    <link rel="canonical" href="{{canonicalUrl}}" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{canonicalUrl}}">
+    <meta property="og:title" content="{{ title or metadata.title }}">
+    <meta property="og:description" content="{{ description or metadata.description }}">
+    <meta property="og:image" content="{{featuredImageUrl}}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{canonicalUrl}}">
+    <meta property="twitter:title" content="{{ title or metadata.title }}">
+    <meta property="twitter:description" content="{{ description or metadata.description }}">
+    <meta property="twitter:image" content="{{featuredImageUrl}}">
+
+    <link rel="stylesheet" href="{{ '/css/main.css' | url }}">
+
+    <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
+    <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
+
+    {# icons and favicons from single svg file, currently having error so ignore it #}
+
+    {# {%- favicons './src/icons/favicon.svg', appleIconBgColor='#316CFF', manifestData={
+      "name": "Open Bulk URL",
+      "short_name":"Open Bulk URL",
+      "start_url": ".",
+      "description": "Open Bulk URLs or Extract URLs from content easily.",
+      "theme_color": "#ffffff",
+      "background_color": "#ffffff",
+      "display": "standalone"} %} #}
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.webmanifest">
+
+    {# only override lang block from home page because only homepage is multilingual #}
+    {%- block lang %}{% endblock %}
+
+    {%- block before_head %}{% endblock %}
+
+
+
+
+  </head>
+  <body class="flex flex-col min-h-screen justify-around">
+
+    {%- block header %}
+		{%- include "partials/header.njk" %}
+    {%- endblock %}
+
+
+    <main class="flex-grow" {% if templateClass %} class="{{ templateClass }}"{% endif %}>
+
+		{%- block content %}
+
+			{{ content | safe }}
+
+		{%- endblock %}
+
+
+    </main>
+
+
+    {# {%- include "partials/moretools.njk" %} #}
+    {# {%- include "partials/feedback.njk" %} #}
+
+    {# before and after footer can be override only when you extend base.njk layout #}
+    <!-- Before footer -->
+	  {%- block before_footer %}{%- endblock %}
+
+    {%- include "partials/footer.njk" %}
+
+{# check extend base.njk where you need it to update the following block #}
+    <!-- After footer -->
+	{%- block after_footer %}{%- endblock %}
+    {#
+    use it like this
+
+    {% highlight "js" %}
+    function myFunction() {
+      return true;
+    }
+    {% endhighlight %}
+
+     #}
+    <link rel="stylesheet" href="{{ '/css/prism-base16-monokai.dark.css' | url }}">
+    {# prism-diff.css not included in above file #}
+    {# <link rel="stylesheet" href="{{ '/css/prism-diff.css' | url }}"> #}
+  <script src="/js/script.js"></script>
+
+    <!-- Current page: {{ page.url | url }} -->
+  </body>
+</html>

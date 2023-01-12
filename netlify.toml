@@ -1,0 +1,27 @@
+# build and deploy from _site
+[build]
+  publish = "_site"
+  command = "npm run build"
+
+# [[plugins]]
+#   package = "@netlify/plugin-sitemap"
+#   # https://github.com/netlify-labs/netlify-plugin-sitemap#readme
+
+#   [plugins.inputs]
+#   buildDir = "public"
+#   exclude = [
+#      # By Glob pattern
+#     '**/404.html',
+#   ]
+
+#   # default is true also
+#   prettyURLs = true
+#   # Append missing trailing slash to pretty URL, only use if want .html pages to use /
+#   trailingSlash = true
+
+[[plugins]]
+  #https://www.npmjs.com/package/netlify-plugin-js-obfuscator/v/1.0.20
+  package = "netlify-plugin-js-obfuscator"
+
+[[plugins]]
+  package = "netlify-plugin-submit-sitemap"

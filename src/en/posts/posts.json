@@ -1,0 +1,8 @@
+{
+  "tags": [
+    "posts"
+  ],
+ "permalink":"/blog/{{ page.fileSlug }}/",
+ "locale":"en",
+ "featured_image": "/img/open-graph.png"
+}
