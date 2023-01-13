@@ -16,7 +16,7 @@
 {% endfor %}
 </ol> #}
 
-<section class="postlist container my-10 mx-auto px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<section class="postlist container my-10 mx-auto px-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
 
   {% for post in postslist | reverse %}
   <a href="{{ post.url | url }}" class="max-w-xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl shadow-gray-100" >
@@ -45,7 +45,7 @@
                   <code>{{ post.url }}</code>
                   {% endif %}
                   </h2>
-                <p class="mt-2  text-gray-500  ">How to use the tool to get the most out of it.</p>
+                <p class="mt-2  text-gray-500  ">{{ post.templateContent | excerpt(100) }}</p>
             </div>
 
         </div>

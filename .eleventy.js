@@ -1,3 +1,5 @@
+// https://11ty.rocks/
+
 const fs = require("fs");
 const path = require("path");
 
@@ -16,6 +18,8 @@ const Image = require("@11ty/eleventy-img");
 
 const directoryOutputPlugin = require("@11ty/eleventy-plugin-directory-output");
 
+/* importy _data file */
+const _data = require('./src/_data/metadata.json');
 /* Image Optimize and multiple format generator,
 alt = is file name
 size = is alread passed
@@ -78,18 +82,14 @@ module.exports = function (eleventyConfig) {
   // Copy the `img` and `css` folders to the output https://www.11ty.dev/docs/copy/
   eleventyConfig.addPassthroughCopy("src/img/open-graph.png");
   eleventyConfig.addPassthroughCopy("src/img/*.gif");
-  // eleventyConfig.addPassthroughCopy("src/css");
-  // eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy({"src/public/":"/"});
-  // eleventyConfig.addPassthroughCopy({"src/public/js":"/"});
-  // copy icons from icons folder to root
-  // eleventyConfig.addPassthroughCopy({ "src/icons": "/" });
 
   /* Plugins */
   eleventyConfig.addPlugin(pluginRss); // absoluteUrl filter from this plugin
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
-  eleventyConfig.addPlugin(faviconsPlugin, {});
+  console.log(_data.manifest)
+  eleventyConfig.addPlugin(faviconsPlugin, {"manifestData":_data.manifest});
   eleventyConfig.setQuietMode(false); // added for below plugin to work without noise
   eleventyConfig.addPlugin(directoryOutputPlugin, {
     // Customize columns
@@ -143,6 +143,16 @@ module.exports = function (eleventyConfig) {
   }
 
   eleventyConfig.addFilter("filterTagList", filterTagList);
+
+  /*
+  write excerpt, filters additional parameret can be passed like 2nd example
+  {{ post.templateContent | excerpt }}
+  {{ post.templateContent | excerpt(200) }}
+  */
+  eleventyConfig.addFilter("excerpt", (post,limit=100) => {
+    const content = post.replace(/(<([^>]+)>)/gi, "");
+    return content.substr(0, content.lastIndexOf(" ", limit)) + "...";
+  });
 
   // Create an array of all tags
   eleventyConfig.addCollection("tagList", function (collection) {
