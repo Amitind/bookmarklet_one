@@ -1,7 +1,7 @@
 {
   "manifest": {
     "name": "Bookmarklets",
-    "short_name": "Site Title",
+    "short_name": "Bookmarklet",
     "start_url": ".",
     "description": "",
     "theme_color": "#ffffff",
@@ -9,30 +9,30 @@
     "display": "standalone"
   },
   "title": "Bookmarklets",
-  "subtitle": "sub title",
+  "subtitle": "Best Bookmarklets",
   "dir": "ltr",
   "social": {
     "fb": "",
     "twitter": "",
     "insta": "",
-    "email": "hi[at]example.com"
+    "email": "hi[at]bookmarklet.one"
   },
-  "url": "https://example.com/",
+  "url": "https://bookmarklet.one/",
   "locale": "en",
   "description": "meta description",
   "feed": {
     "subtitle": "feed subtitle",
     "filename": "feed.xml",
     "path": "/feed/feed.xml",
-    "id": "https://example.com/"
+    "id": "https://bookmarklet.one/"
   },
   "jsonfeed": {
     "path": "/feed/feed.json",
-    "url": "https://example.com/feed/feed.json"
+    "url": "https://bookmarklet.one/feed/feed.json"
   },
   "author": {
-    "name": "author name",
-    "email": "hi[at]example.com",
+    "name": "Amit Yadav",
+    "email": "hi[at]bookmarklet.one",
     "url": "author/url"
   }
 
