@@ -1,7 +1,7 @@
 # build and deploy from _site
 [build]
   publish = "_site"
-  command = "npm run build"
+  command = "pnpm build:all"
 
 # [[plugins]]
 #   package = "@netlify/plugin-sitemap"
@@ -19,9 +19,22 @@
 #   # Append missing trailing slash to pretty URL, only use if want .html pages to use /
 #   trailingSlash = true
 
-[[plugins]]
-  #https://www.npmjs.com/package/netlify-plugin-js-obfuscator/v/1.0.20
-  package = "netlify-plugin-js-obfuscator"
+# https://www.npmjs.com/package/netlify-plugin-js-obfuscator/v/1.0.20
+# [[plugins]]
+#   package = "netlify-plugin-js-obfuscator"
 
+# https://www.npmjs.com/package/netlify-plugin-submit-sitemap
 [[plugins]]
   package = "netlify-plugin-submit-sitemap"
+
+# https://www.npmjs.com/package/netlify-plugin-11ty
+[[plugins]]
+    package = "netlify-plugin-11ty"
+    [plugins.inputs]
+        # eleventy-img outputDir, path relative to publish directory
+        cache_img = 'img/'
+        cache_img_httpHeader = false
+
+        # eleventy-fetch cacheDir, path relative to publish directory
+        cache_assets = '../.cache/'
+        # cache_other = []

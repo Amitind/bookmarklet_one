@@ -1,22 +1,24 @@
 ---
-title: All Components
+title: Typography
 eleventyExcludeFromCollections: true
 eleventyNavigation:
   parent: meta
-  key: component
-  title: Component
+  key: typography
+  title: Typography
   order: 3
 ---
 
-## h2 heading{:.text-3xl .font-heading .font-bold}
+## h1 heading{:.text-4xl .font-bold}
 
-### h3 heading{:.text-3xl .font-heading .font-bold}
+## h2 heading{:.text-3xl .font-bold}
 
-#### h4 heading{:.text-2xl .font-heading .font-bold}
+### h3 heading{:.text-3xl .font-bold}
 
-##### h5 heading{:.text-2xl .font-heading .font-bold}
+#### h4 heading{:.text-2xl .font-bold}
 
-###### h6 heading{:.text-xl .font-heading .font-bold}
+##### h5 heading{:.text-2xl .font-bold}
+
+###### h6 heading{:.text-xl .font-bold}
 
 this is paragraph, to go to new paragraph add one blank link
 
@@ -29,6 +31,11 @@ like this it will add br
 {% image "./src/img/open-graph.png", sizes="", widths=['400'], imgclass="object-cover" %}
 
 :::alert {:.grid .md:grid-cols-2 .gap-2 .bg-blue-300 .my-5}
+ custom alert box using with custom classes
+
+ custom alert box using with custom classes
+:::
+:::group {:.grid .md:grid-cols-2 .gap-2 .bg-gray-50 .p-5 .my-5}
  custom alert box using with custom classes
 
  custom alert box using with custom classes
@@ -70,6 +77,30 @@ function abc(){
 
 [[kbd]]+[[kbd]]
 
+==mark text==
+
 text with ref url {% ref "http://localhost:8000/allcomponents/" %}
 
 [normal link](http://localhost:8000/allcomponents/)
+
+* list item 1
+* list item 2
+* to apply class to ul write attribute in new line
+{:.list-decimal .list-inside}
+
+to load bookmarklet after minifying
+{% set js %}
+{% include "src/bm/qr_code.js" %}
+{% endset %}
+
+```js
+//generate QR Code
+javascript: {{js | jsmin | safe}}
+```
+
+load bookmarklet directly without any filter
+
+```js
+//generate QR Code
+javascript: {% include "src/bm/qr_code.js" %}
+```

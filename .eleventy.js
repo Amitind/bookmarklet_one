@@ -248,7 +248,7 @@ module.exports = function (eleventyConfig) {
 	let markdownLibrary = markdownIt({
 		html: true, // html tag inside source
 		breaks: true, // use newline '\n' as <br>
-		linkify: true, // Autoconvert URL-like text to links
+		linkify: false, // Autoconvert URL-like text to links
 	})
 		.use(markdownItAnchor, {
 			level: 2, // h2 and above all headings
@@ -274,7 +274,7 @@ module.exports = function (eleventyConfig) {
 					//opening tag
 					return `<div class='alert bg-green-200'>
                   <div class='icon'>
-                    <img width='22' height='22' class='keep-original' src='/img/icons/success.svg' alt='Success icon'>
+                    <img width='22' height='22' class='keep-original' src='/icons/success.svg' alt='Success icon'>
                   </div>`;
 				} else {
 					return '</div>';
@@ -288,7 +288,7 @@ module.exports = function (eleventyConfig) {
 					//opening tag
 					return `<div class='alert bg-red-200'>
                   <div class='icon'>
-                    <img width='22' height='22' class='keep-original' src='/img/icons/danger.svg' alt='danger icon'>
+                    <img width='22' height='22' class='keep-original' src='/icons/danger.svg' alt='danger icon'>
                   </div>`;
 				} else {
 					return '</div>';
@@ -302,7 +302,7 @@ module.exports = function (eleventyConfig) {
 					//opening tag
 					return `<div class='alert bg-blue-200'>
                   <div class='icon'>
-                    <img width='22' height='22' class='keep-original' src='/img/icons/info.svg' alt='info icon'>
+                    <img width='22' height='22' class='keep-original' src='/icons/info.svg' alt='info icon'>
                   </div>`;
 				} else {
 					return '</div>';
@@ -316,7 +316,7 @@ module.exports = function (eleventyConfig) {
 					//opening tag
 					return `<div class='alert bg-amber-200'>
                   <div class='icon'>
-                    <img width='22' height='22' class='keep-original' src='/img/icons/idea.svg' alt='idea icon'>
+                    <img width='22' height='22' class='keep-original' src='/icons/idea.svg' alt='idea icon'>
                   </div>`;
 				} else {
 					return '</div>';
@@ -330,14 +330,15 @@ module.exports = function (eleventyConfig) {
 					//opening tag
 					return `<div class='alert bg-orange-200'>
                   <div class='icon'>
-                    <img width='22' height='22' class='keep-original' src='/img/icons/warning.svg' alt='warning icon'>
+                    <img width='22' height='22' class='keep-original' src='/icons/warning.svg' alt='warning icon'>
                   </div>`;
 				} else {
 					return '</div>';
 				}
 			},
 		})
-		.use(mdItContainer, 'alert');
+		.use(mdItContainer, 'alert')
+		.use(mdItContainer, 'group');
 	eleventyConfig.setLibrary('md', markdownLibrary);
 
 	/*

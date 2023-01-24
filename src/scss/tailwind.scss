@@ -33,7 +33,8 @@
 	h6:hover a {
 		@apply opacity-100 text-gray-300;
 	}
-    /* .direct-link {
+
+	/* .direct-link {
 		@apply opacity-0 text-gray-300 font-semibold ml-1;
 	} */
 
@@ -45,12 +46,10 @@
 	article a {
 		@apply text-blue-500;
 	}
-	article p {
-		@apply text-blue-500;
-	}
-	main[data-layout*='post'] article p,
-	main[data-layout*='page'] article p {
-		@apply mb-3;
+
+	main[data-layout*='post'] article,
+	main[data-layout*='page'] article {
+		@apply space-y-4;
 	}
 	/*  main[data-layout="post"] a:hover{
         @apply text-blue-700
