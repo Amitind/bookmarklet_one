@@ -9,11 +9,11 @@ eleventyNavigation:
 ---
 
 <!-- Main Start -->
-<div class="main-container  -mt-6 pt-6 bg-gray-100 ">
-	<div class="px-5 py-10 text-center space-y-2 text-gray-700">
-		<h1 class="text-3xl sm:text-4xl font-bold">{{title}}</h1>
-	</div>
+<div class="main-container  pt-6 bg-gray-100 ">
+  <div class="px-5 py-10 text-center space-y-2 text-gray-700">
+    <h1 class="text-3xl sm:text-4xl font-bold">{{title}}</h1>
+  </div>
 </div>
 
 {% set postslist = collections.posts %}
-{% include "postslist.njk" %}
+{% include "components/postslist.njk" %}

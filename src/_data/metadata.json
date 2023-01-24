@@ -1,6 +1,6 @@
 {
   "manifest": {
-    "name": "Site Title",
+    "name": "Bookmarklets",
     "short_name": "Site Title",
     "start_url": ".",
     "description": "",
@@ -8,7 +8,7 @@
     "background_color": "#ffffff",
     "display": "standalone"
   },
-  "title": "Site Title",
+  "title": "Bookmarklets",
   "subtitle": "sub title",
   "dir": "ltr",
   "social": {

@@ -26,7 +26,7 @@ permalink: /tags/{{ tag | slugify }}/
 	</div>
 
 {% set postslist = collections[ tag ] %}
-{% include "postslist.njk" %}
+{% include "components/postslist.njk" %}
 
 <p class="w-full text-center py-16" >
   <a

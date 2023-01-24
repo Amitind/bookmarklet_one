@@ -1,7 +1,7 @@
 // run npx tailwindcss-cli build tailwind.css -o public/style.css
 
 module.exports = {
-  content : ['./src/**/*.{html,md,njk}'],
+  content : ['./src/**/*.{html,md,njk}','.eleventy.js'],
   // darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {},
@@ -27,5 +27,7 @@ module.exports = {
     // '2xl': '1536px',
     // => @media (min-width: 1536px) { ... }
   },
-  plugins: [],
+  plugins: [
+    // require('@tailwindcss/typography'),
+  ],
 }

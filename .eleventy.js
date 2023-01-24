@@ -1,257 +1,399 @@
-// https://11ty.rocks/
+/*
+https://11ty.rocks/
+https://github.com/dinhanhthi/dinhanhthi.com/blob/dev/.eleventy.js
+*/
 
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
+require('dotenv').config();
 
-const { DateTime } = require("luxon");
-const markdownIt = require("markdown-it");
-const markdownItAnchor = require("markdown-it-anchor");
+const { DateTime } = require('luxon');
+const markdownIt = require('markdown-it');
+const markdownItAnchor = require('markdown-it-anchor');
+const mdItContainer = require('markdown-it-container');
 
-const pluginRss = require("@11ty/eleventy-plugin-rss");
-const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const pluginRss = require('@11ty/eleventy-plugin-rss');
 
-const pluginNavigation = require("@11ty/eleventy-navigation");
+/* https://www.11ty.dev/docs/plugins/syntaxhighlight/ */
+const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 
-// https://www.npmjs.com/package/eleventy-plugin-gen-favicons
-const faviconsPlugin = require("eleventy-plugin-gen-favicons");
-const Image = require("@11ty/eleventy-img");
+const pluginNavigation = require('@11ty/eleventy-navigation');
 
-const directoryOutputPlugin = require("@11ty/eleventy-plugin-directory-output");
+/* https://www.npmjs.com/package/eleventy-plugin-gen-favicons */
+const faviconsPlugin = require('eleventy-plugin-gen-favicons');
+const Image = require('@11ty/eleventy-img');
+
+const directoryOutputPlugin = require('@11ty/eleventy-plugin-directory-output');
+
+const { minify } = require('terser'); //jsmin
+const CleanCSS = require('clean-css'); //cssmin
+const htmlmin = require('html-minifier'); //htmlmin
 
 /* importy _data file */
 const _data = require('./src/_data/metadata.json');
-/* Image Optimize and multiple format generator,
-alt = is file name
-size = is alread passed
-widths = pass [null] if do not want to generate 600 varient
-formats = by default webp and orginal file format is generated,
-imgclass = pass tailwind css classes want to opply on images
-src = is only required field
-
-use shortcode like this
-{% image "./src/img/open-graph.png", imgclass="object-cover w-full h-64" %}
-
-*/
-async function imageShortcode(
-  src,
-  {
-    sizes = "(min-width: 30em) 50vw, 100vw",
-    alt = path.basename(src, path.extname(src)),
-    widths = [600, null],
-    formats = ["webp", null],
-    imgclass = "",
-  }
-) {
-  console.log(src);
-  if (src.startsWith("/img/")) {
-    src = `./src${src}`;
-    console.log(src);
-  }
-
-  let metadata = await Image(src, {
-    widths,
-    formats,
-    outputDir: "./_site/img/",
-    urlPath: "/img/",
-    sharpOptions: {
-      animated: false,
-    },
-  });
-
-  let imageAttributes = {
-    class: imgclass,
-    alt,
-    sizes,
-    loading: "lazy",
-    decoding: "async",
-  };
-
-  // You bet we throw an error on missing alt in `imageAttributes` (alt="" works okay)
-  return Image.generateHTML(metadata, imageAttributes);
-}
 
 module.exports = function (eleventyConfig) {
-  /* Files to watch and reload the build */
+	// Merge data instead of overriding https://www.11ty.dev/docs/data-deep-merge/
+	eleventyConfig.setDataDeepMerge(true);
 
-  // watch files to reload
-  eleventyConfig.addWatchTarget("./tailwind.config.js");
-  eleventyConfig.addWatchTarget("./src/scss/tailwind.scss");
+	/* ignore and add folders */
+	switch (process.env.ELEVENTY_ENV) {
+		case 'draft':
+			/* when draft set then load draft posts and remove normal posts */
+			eleventyConfig.ignores.delete('./src/en/posts-draft');
+			eleventyConfig.ignores.add('./src/en/posts');
+			console.log('draft');
+			break;
+		default:
+			/* in default conditon aways ignore posts-draft */
+			eleventyConfig.ignores.add('./src/en/posts-draft');
+			console.log('netlify');
+			break;
+	}
 
-  /* Passthrough files and folders */
+	/* Files to watch and reload the build */
+	// watch files to reload
+	eleventyConfig.addWatchTarget('./tailwind.config.js');
+	// eleventyConfig.addWatchTarget("./src/scss/tailwind.scss");
+	// eleventyConfig.addWatchTarget("./src/en/css/main.css");
 
-  // Copy the `img` and `css` folders to the output https://www.11ty.dev/docs/copy/
-  eleventyConfig.addPassthroughCopy("src/img/open-graph.png");
-  eleventyConfig.addPassthroughCopy("src/img/*.gif");
-  eleventyConfig.addPassthroughCopy({"src/public/":"/"});
+	/* Passthrough files and folders */
 
-  /* Plugins */
-  eleventyConfig.addPlugin(pluginRss); // absoluteUrl filter from this plugin
-  eleventyConfig.addPlugin(pluginSyntaxHighlight);
-  eleventyConfig.addPlugin(pluginNavigation);
-  console.log(_data.manifest)
-  eleventyConfig.addPlugin(faviconsPlugin, {"manifestData":_data.manifest});
-  eleventyConfig.setQuietMode(false); // added for below plugin to work without noise
-  eleventyConfig.addPlugin(directoryOutputPlugin, {
-    // Customize columns
-    columns: {
-      filesize: true, // Use `false` to disable
-      benchmark: true, // Use `false` to disable
-    },
+	// Copy the `img` and `css` folders to the output https://www.11ty.dev/docs/copy/
+	eleventyConfig.addPassthroughCopy('src/img/open-graph.png');
+	eleventyConfig.addPassthroughCopy('src/img/*.gif');
+	eleventyConfig.addPassthroughCopy({ 'src/public/': '/' });
 
-    // Will show in yellow if greater than this number of bytes
-    warningFileSize: 400 * 1000,
-  });
+	/* Plugins */
+	eleventyConfig.addPlugin(pluginRss); // absoluteUrl filter from this plugin
+	eleventyConfig.addPlugin(pluginSyntaxHighlight); // highlight shortcode
+	eleventyConfig.addPlugin(pluginNavigation);
 
-  /* Register Shortcodes */
-  // using nunjucks shortcode because of async function
-  eleventyConfig.addNunjucksAsyncShortcode("image", imageShortcode);
+	eleventyConfig.addPlugin(faviconsPlugin, { manifestData: _data.manifest }); // favicon shortcode
+	eleventyConfig.setQuietMode(false); // added for below plugin to work without noise
+	eleventyConfig.addPlugin(directoryOutputPlugin, {
+		// Customize columns
+		columns: {
+			filesize: true, // Use `false` to disable
+			benchmark: true, // Use `false` to disable
+		},
 
-  /* Apply Filters */
-  eleventyConfig.addFilter("readableDate", (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(
-      "dd LLL yyyy"
-    );
-  });
+		// Will show in yellow if greater than this number of bytes
+		warningFileSize: 400 * 1000,
+	});
 
-  // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
-  eleventyConfig.addFilter("htmlDateString", (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd");
-  });
+	/*
+  Register Shortcodes
+  */
 
-  // Get the first `n` elements of a collection.
-  eleventyConfig.addFilter("head", (array, n) => {
-    if (!Array.isArray(array) || array.length === 0) {
-      return [];
-    }
-    if (n < 0) {
-      return array.slice(n);
-    }
+	/* Image Optimize and multiple format generator,
 
-    return array.slice(0, n);
-  });
+  alt = is file name
+  size = is alread passed
+  widths = pass [null] if do not want to generate 600 varient
+  formats = by default webp and orginal file format is generated,
+  imgclass = pass tailwind css classes want to opply on images
+  src = is only required field
 
-  // Return the smallest number argument
-  eleventyConfig.addFilter("min", (...numbers) => {
-    return Math.min.apply(null, numbers);
-  });
+  use shortcode like this
 
-  function filterTagList(tags) {
-    return (tags || []).filter(
-      (tag) =>
-        ["all", "nav", "post", "posts", "pages", "page"].indexOf(tag) === -1
-    );
-  }
+  {% image "./src/img/open-graph.png", imgclass="object-cover w-full h-64" %}
+  in markdown
+  {% image "./src/img/open-graph.png", sizes="", widths=['200'], imgclass="object-cover w-full" %}
 
-  eleventyConfig.addFilter("filterTagList", filterTagList);
+  using nunjucks shortcode because of async function
+ */
+	eleventyConfig.addNunjucksAsyncShortcode(
+		'image',
+		async function (
+			src,
+			{
+				sizes = '', //"(min-width: 30em) 50vw, 100vw"
+				alt = path.basename(src, path.extname(src)),
+				widths = ['auto'],
+				formats = ['webp', 'auto'],
+				imgclass = '',
+			}
+		) {
+			// console.log(src);
+			if (src.startsWith('/img/')) {
+				src = `./src${src}`;
+				// console.log(src);
+			}
 
-  /*
+			let metadata = await Image(src, {
+				widths,
+				formats,
+				outputDir: './_site/img/',
+				urlPath: '/img/',
+				sharpOptions: {
+					animated: false,
+				},
+			});
+
+			let imageAttributes = {
+				class: imgclass,
+				alt,
+				sizes,
+				loading: 'lazy',
+				decoding: 'async',
+			};
+
+			// You bet we throw an error on missing alt in `imageAttributes` (alt="" works okay)
+			return Image.generateHTML(metadata, imageAttributes);
+		}
+	);
+
+	/* Apply Filters */
+
+	/* jsmin using terser {{ jscode | jsmin | safe }}*/
+
+	eleventyConfig.addNunjucksAsyncFilter(
+		'jsmin',
+		async function (code, callback) {
+			try {
+				const minified = await minify(code);
+				callback(null, minified.code);
+			} catch (err) {
+				console.error('Terser error: ', err);
+				// Fail gracefully.
+				callback(null, code);
+			}
+		}
+	);
+	/* CSS min {{ googlefonts | cssmin | safe }}*/
+	eleventyConfig.addFilter('cssmin', function (code) {
+		return new CleanCSS({}).minify(code).styles;
+	});
+
+	eleventyConfig.addFilter('readableDate', (dateObj) => {
+		return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat(
+			'dd LLL yyyy'
+		);
+	});
+
+	/* htmlmin */
+
+	eleventyConfig.addTransform('htmlmin', function (content) {
+		// Prior to Eleventy 2.0: use this.outputPath instead
+		if (this.page.outputPath && this.page.outputPath.endsWith('.html')) {
+			let minified = htmlmin.minify(content, {
+				useShortDoctype: true,
+				removeComments: true,
+				collapseWhitespace: true,
+				// conservativeCollapse: true,
+			});
+			return minified;
+		}
+
+		return content;
+	});
+
+	// https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
+	eleventyConfig.addFilter('htmlDateString', (dateObj) => {
+		return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat(
+			'yyyy-LL-dd'
+		);
+	});
+
+	// Get the first `n` elements of a collection.
+	eleventyConfig.addFilter('head', (array, n) => {
+		if (!Array.isArray(array) || array.length === 0) {
+			return [];
+		}
+		if (n < 0) {
+			return array.slice(n);
+		}
+
+		return array.slice(0, n);
+	});
+
+	// Return the smallest number argument
+	eleventyConfig.addFilter('min', (...numbers) => {
+		return Math.min.apply(null, numbers);
+	});
+
+	function filterTagList(tags) {
+		return (tags || []).filter(
+			(tag) =>
+				['all', 'nav', 'post', 'posts', 'pages', 'page'].indexOf(
+					tag
+				) === -1
+		);
+	}
+
+	eleventyConfig.addFilter('filterTagList', filterTagList);
+
+	/*
   write excerpt, filters additional parameret can be passed like 2nd example
   {{ post.templateContent | excerpt }}
   {{ post.templateContent | excerpt(200) }}
   */
-  eleventyConfig.addFilter("excerpt", (post,limit=100) => {
-    const content = post.replace(/(<([^>]+)>)/gi, "");
-    return content.substr(0, content.lastIndexOf(" ", limit)) + "...";
-  });
+	eleventyConfig.addFilter('excerpt', (post, limit = 100) => {
+		const content = post.replace(/(<([^>]+)>)/gi, '');
+		return content.substr(0, content.lastIndexOf(' ', limit)) + '...';
+	});
 
-  // Create an array of all tags
-  eleventyConfig.addCollection("tagList", function (collection) {
-    let tagSet = new Set();
-    collection.getAll().forEach((item) => {
-      (item.data.tags || []).forEach((tag) => tagSet.add(tag));
-    });
+	// Create an array of all tags
+	eleventyConfig.addCollection('tagList', function (collection) {
+		let tagSet = new Set();
+		collection.getAll().forEach((item) => {
+			(item.data.tags || []).forEach((tag) => tagSet.add(tag));
+		});
 
-    return filterTagList([...tagSet]);
-  });
+		return filterTagList([...tagSet]);
+	});
 
-  // Customize Markdown library and settings:
-  let markdownLibrary = markdownIt({
-    html: true,
-    linkify: true,
-    breaks: false,
-  }).use(markdownItAnchor, {
-    permalink: markdownItAnchor.permalink.ariaHidden({
-      placement: "after",
-      class: "direct-link",
-      symbol: "#",
-    }),
-    level: [1, 2, 3, 4],
-    slugify: eleventyConfig.getFilter("slugify"),
-  });
-  eleventyConfig.setLibrary("md", markdownLibrary);
+	// Customize Markdown library and settings:
+	let markdownLibrary = markdownIt({
+		html: true, // html tag inside source
+		breaks: true, // use newline '\n' as <br>
+		linkify: true, // Autoconvert URL-like text to links
+	})
+		.use(markdownItAnchor, {
+			level: 2, // h2 and above all headings
+			permalink: markdownItAnchor.permalink.ariaHidden({
+				placement: 'after',
+				class: 'opacity-0 text-gray-300 font-semibold ml-1',
+				symbol: '#',
+				// symbol:'<i class="absolute -left-5 text-gray-100 hover:text-gray-300"></i>',
+			}),
+			slugify: eleventyConfig.getFilter('slugify'),
+		})
+		.use(require('markdown-it-attrs'), {
+			// use {:.classname attr=abc} options
+			leftDelimiter: '{:',
+			rightDelimiter: '}',
+		})
+		.use(require('markdown-it-mark')) // ==marked text==
+		.use(require('markdown-it-kbd')) // [[Ctrl]]
+		.use(mdItContainer, 'success', {
+			render: function (tokens, idx) {
+				var m = tokens[idx].info.trim().match(/^success\s+(.*)$/);
+				if (tokens[idx].nesting === 1) {
+					//opening tag
+					return `<div class='alert bg-green-200'>
+                  <div class='icon'>
+                    <img width='22' height='22' class='keep-original' src='/img/icons/success.svg' alt='Success icon'>
+                  </div>`;
+				} else {
+					return '</div>';
+				}
+			},
+		})
+		.use(mdItContainer, 'danger', {
+			render: function (tokens, idx) {
+				var m = tokens[idx].info.trim().match(/^danger\s+(.*)$/);
+				if (tokens[idx].nesting === 1) {
+					//opening tag
+					return `<div class='alert bg-red-200'>
+                  <div class='icon'>
+                    <img width='22' height='22' class='keep-original' src='/img/icons/danger.svg' alt='danger icon'>
+                  </div>`;
+				} else {
+					return '</div>';
+				}
+			},
+		})
+		.use(mdItContainer, 'info', {
+			render: function (tokens, idx) {
+				var m = tokens[idx].info.trim().match(/^info\s+(.*)$/);
+				if (tokens[idx].nesting === 1) {
+					//opening tag
+					return `<div class='alert bg-blue-200'>
+                  <div class='icon'>
+                    <img width='22' height='22' class='keep-original' src='/img/icons/info.svg' alt='info icon'>
+                  </div>`;
+				} else {
+					return '</div>';
+				}
+			},
+		})
+		.use(mdItContainer, 'idea', {
+			render: function (tokens, idx) {
+				var m = tokens[idx].info.trim().match(/^idea\s+(.*)$/);
+				if (tokens[idx].nesting === 1) {
+					//opening tag
+					return `<div class='alert bg-amber-200'>
+                  <div class='icon'>
+                    <img width='22' height='22' class='keep-original' src='/img/icons/idea.svg' alt='idea icon'>
+                  </div>`;
+				} else {
+					return '</div>';
+				}
+			},
+		})
+		.use(mdItContainer, 'warning', {
+			render: function (tokens, idx) {
+				var m = tokens[idx].info.trim().match(/^warning\s+(.*)$/);
+				if (tokens[idx].nesting === 1) {
+					//opening tag
+					return `<div class='alert bg-orange-200'>
+                  <div class='icon'>
+                    <img width='22' height='22' class='keep-original' src='/img/icons/warning.svg' alt='warning icon'>
+                  </div>`;
+				} else {
+					return '</div>';
+				}
+			},
+		})
+		.use(mdItContainer, 'alert');
+	eleventyConfig.setLibrary('md', markdownLibrary);
 
-  // Override Browsersync defaults (used only with --serve)
-  // eleventyConfig.setBrowserSyncConfig({
-  //   callbacks: {
-  //     ready: function(err, browserSync) {
-  //       const content_404 = fs.readFileSync('_site/404.html');
+	/*
 
-  //       browserSync.addMiddleware("*", (req, res) => {
-  //         // Provides the 404 content without redirect.
-  //         res.writeHead(404, {"Content-Type": "text/html; charset=UTF-8"});
-  //         res.write(content_404);
-  //         res.end();
-  //       });
-  //     },
-  //   },
-  //   ui: false,
-  //   ghostMode: false
-  // });
-  /* eleventy dev server */
+  👉 you can use https://www.11ty.dev/docs/plugins/render/ directly and ignore below shortcode
 
-  eleventyConfig.setServerOptions({
-    // Default values are shown:
+  Using {% markdown %}{% endmarkdown %} inside .njk */
+	eleventyConfig.addPairedShortcode('markdown', (content, inline = null) => {
+		return inline
+			? markdownLibrary.renderInline(content)
+			: markdownLibrary.render(content);
+	});
+	/*
+  Using {% ref "url" %} for thirdparty urls
+  Using {% ref "url", "refname" %} refname is optional
 
-    // Opt-out of the live reload snippet
-    enabled: true,
+  */
+	eleventyConfig.addShortcode('ref', function (url, ref = 'ref') {
+		console.log(url, ref);
+		return `<sup><a href="${url}" rel="noopener noreferrer" target="_blank">[${ref}]</a></sup>`;
+	});
 
-    // Opt-out of DOM diffing updates and use page reloads
-    domdiff: true,
+	/* eleventy dev server */
 
-    // The starting port number to attempt to use
-    port: 8080,
+	eleventyConfig.setServerOptions({
+		liveReload: true,
+		// The starting port number to attempt to use
+		port: 8000,
+		// number of times to increment the port if in use
+		portReassignmentRetryCount: 10,
 
-    // number of times to increment the port if in use
-    portReassignmentRetryCount: 10,
+		// Show local network IP addresses for device testing
+		showAllHosts: true,
 
-    // Show local network IP addresses for device testing
-    showAllHosts: true,
+		showVersion: true,
+	});
 
-    // Use a local key/certificate to opt-in to local HTTP/2 with https
-    https: {
-      // key: "./localhost.key",
-      // cert: "./localhost.cert",
-    },
+	return {
+		// Control which files Eleventy will process
+		// e.g.: *.md, *.njk, *.html, *.liquid
+		templateFormats: ['md', 'njk', 'html', 'liquid'],
 
-    // Change the name of the special folder name used for injected scripts
-    folder: ".11ty",
+		// Pre-process *.md files with: (default: `liquid`)
+		markdownTemplateEngine: 'njk',
+		// Pre-process *.html files with: (default: `liquid`)
+		htmlTemplateEngine: 'njk',
 
-    // Show the server version number on the command line
-    showVersion: true,
+		pathPrefix: '/',
+		// -----------------------------------------------------------------
 
-    // Change the default file encoding for reading/serving files
-    encoding: "utf-8",
-  });
-
-  return {
-    // Control which files Eleventy will process
-    // e.g.: *.md, *.njk, *.html, *.liquid
-    templateFormats: ["md", "njk", "html", "liquid"],
-
-    // Pre-process *.md files with: (default: `liquid`)
-    markdownTemplateEngine: "njk",
-    // Pre-process *.html files with: (default: `liquid`)
-    htmlTemplateEngine: "njk",
-
-    pathPrefix: "/",
-    // -----------------------------------------------------------------
-
-    // These are all optional
-    dir: {
-      input: "src",
-      includes: "_includes",
-      data: "_data",
-      output: "_site",
-    },
-  };
+		// These are all optional
+		dir: {
+			input: 'src',
+			includes: '_includes',
+			data: '_data',
+			output: '_site',
+		},
+	};
 };

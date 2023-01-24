@@ -1,5 +1,6 @@
 ---
 title: About Us
+# date: 2022-01-26
 eleventyNavigation:
   parent: primary
   key: about
@@ -7,6 +8,4 @@ eleventyNavigation:
   order: 3
 ---
 
-<div class="p-4">
-<p>about us</p>
-</div>
+About us

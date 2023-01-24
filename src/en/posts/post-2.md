@@ -1,12 +1,12 @@
 ---
-title: Post 1 title
-description: Using Bulk Url Opener is easy, all you need is links you want to open in bulk. This can help you grab links from the text content as well.
-old-date: 2021-06-26
+title: Make Bookmarklets
+description: ""
 tags:
   - How To
 layout: layouts/post.njk
 featured_image: /img/open-graph.png
 ---
+<!-- # permalink: bookmarklet-maker -->
 <!-- Main Start -->
 
 <!-- post content start -->

@@ -19,6 +19,15 @@
         {%- endif -%}
     {%- endset -%}
 
+    {# <!-- capture the JS content as a Nunjucks variable -->
+    {% set js %}
+      {% include "src/_data/googlefonts.js" %}
+    {% endset %}
+    <!-- feed it through our jsmin filter to minify -->
+    <script>
+      {{ js | jsmin | safe }}
+    </script> #}
+
     <link rel="canonical" href="{{canonicalUrl}}" />
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -34,7 +43,11 @@
     <meta property="twitter:description" content="{{ description or metadata.description }}">
     <meta property="twitter:image" content="{{featuredImageUrl}}">
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <style>{{ googlefonts | cssmin | safe }}</style>
     <link rel="stylesheet" href="{{ '/css/main.css' | url }}">
+    <script src="{{ '/js/main.min.js' | url }}" defer></script>
 
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
     <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
@@ -60,8 +73,13 @@
 		{%- include "partials/header.njk" %}
     {%- endblock %}
 
-
-    <main class="flex-grow" {% if templateClass %} class="{{ templateClass }}"{% endif %}>
+{#
+document.querySelector('main').dataset
+now you can use window.dataLayer = window.dataLayer || [] to update them to dataLayer
+#}
+    <main class="flex-grow"
+    data-layout="{{ templateClass }}"
+    data-tags="{{ tags }}">
 
 		{%- block content %}
 
@@ -98,8 +116,7 @@
     <link rel="stylesheet" href="{{ '/css/prism-base16-monokai.dark.css' | url }}">
     {# prism-diff.css not included in above file #}
     {# <link rel="stylesheet" href="{{ '/css/prism-diff.css' | url }}"> #}
-  <script src="/js/script.js"></script>
 
-    <!-- Current page: {{ page.url | url }} -->
+    {# {{page | dump}} #}
   </body>
 </html>
