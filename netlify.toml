@@ -1,7 +1,7 @@
 # build and deploy from _site
 [build]
   publish = "_site"
-  command = "npm build"
+  command = "pnpm build:all"
 
 # [[plugins]]
 #   package = "@netlify/plugin-sitemap"
