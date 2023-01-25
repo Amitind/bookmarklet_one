@@ -1,7 +1,7 @@
 ---
 title: How to Create Bookmarklets
 description: ""
-status: draft
+date: 2023-01-25
 tags:
   - How To
 featured_image: /img/open-graph.png

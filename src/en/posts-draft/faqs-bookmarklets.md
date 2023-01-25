@@ -6,7 +6,7 @@ tags:
 layout: layouts/post.njk
 featured_image: /img/open-graph.png
 ---
-{# permalink: what-are-bookmarklets #}
+permalink: faqs-bookmarklets
 <!-- Main Start -->
 
 <!-- post content start -->

@@ -44,6 +44,12 @@ module.exports = function (eleventyConfig) {
 			eleventyConfig.ignores.add('./src/en/posts');
 			console.log('draft');
 			break;
+		case 'local':
+			/* when draft set then load draft posts and remove normal posts */
+			// eleventyConfig.ignores.add('./src/en/posts-draft');
+			// eleventyConfig.ignores.add('./src/en/posts');
+			console.log('draft');
+			break;
 		default:
 			/* in default conditon aways ignore posts-draft */
 			eleventyConfig.ignores.add('./src/en/posts-draft');
