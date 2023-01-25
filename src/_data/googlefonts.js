@@ -7,7 +7,7 @@ module.exports = async function() {
 
 	try {
 		// https://developer.github.com/v3/repos/#get
-		let css = await EleventyFetch("https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@400;600;700;800&display=swap", {
+		let css = await EleventyFetch("https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@600;700&display=swap", {
 			duration: "1d",
 			type: "text",
 			directory: ".cache/eleventy-fetch/",

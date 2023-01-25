@@ -115,3 +115,8 @@ njk shortcode for highlight code
 
     {% endhighlight %}
 
+https://wordpress.com/support/markdown-quick-reference/
+
+> quted text
+
+`simplecode`

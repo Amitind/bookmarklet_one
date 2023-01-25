@@ -8,7 +8,7 @@ featured_image: /img/open-graph.png
 custom_class: "prose"
 ---
 
-Bookmarklets are very usefull and timesaving piece of javascript code and that you can use.
+[Bookmarklets](/what-are-bookmarklets/) are very usefull and timesaving piece of javascript code and that you can use.
 
 first let's see how a bookmarklets look like.
 
