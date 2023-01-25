@@ -21,7 +21,7 @@
             <div class="space-x-2">
               {% for tag in post.data.tags | filterTagList %}
                 {% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-                <span class="py-1 px-3 rounded-full uppercase text-xs shadow-xl shadow-blue-100 bg-blue-100 text-blue-500">{{ tag }}</span>
+                <span class="py-1 px-3 rounded-full uppercase text-xs shadow-xl shadow-blue-100 bg-blue-500 text-white">{{ tag }}</span>
               {% endfor %}
             </div>
 

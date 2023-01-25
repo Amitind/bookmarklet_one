@@ -15,8 +15,7 @@
 		@apply font-heading;
 	}
 	body {
-		@apply font-sans;
-		@apply text-gray-700;
+		@apply font-sans text-gray-700 ;
 	}
 	kbd {
 		@apply py-0.5 px-2 bg-gray-100 border-gray-300;

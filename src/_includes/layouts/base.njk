@@ -47,7 +47,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <style>{{ googlefonts | cssmin | safe }}</style>
     <link rel="stylesheet" href="{{ '/css/main.css' | url }}">
-    <script src="{{ '/js/main.min.js' | url }}" defer></script>
+    {# <script src="{{ '/js/main.min.js' | url }}" defer></script> #}
 
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
     <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
@@ -103,16 +103,8 @@ now you can use window.dataLayer = window.dataLayer || [] to update them to data
 {# check extend base.njk where you need it to update the following block #}
     <!-- After footer -->
 	{%- block after_footer %}{%- endblock %}
-    {#
-    use it like this
 
-    {% highlight "js" %}
-    function myFunction() {
-      return true;
-    }
-    {% endhighlight %}
-
-     #}
+    <script >{% include 'src/public/js/main.min.js' %}</script>
     <link rel="stylesheet" href="{{ '/css/prism-base16-monokai.dark.css' | url }}">
     {# prism-diff.css not included in above file #}
     {# <link rel="stylesheet" href="{{ '/css/prism-diff.css' | url }}"> #}

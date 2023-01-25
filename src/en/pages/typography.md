@@ -104,3 +104,14 @@ load bookmarklet directly without any filter
 //generate QR Code
 javascript: {% include "src/bm/qr_code.js" %}
 ```
+
+njk shortcode for highlight code
+
+    {% highlight "js" %}
+
+    function myFunction() {
+      return true;
+    }
+
+    {% endhighlight %}
+

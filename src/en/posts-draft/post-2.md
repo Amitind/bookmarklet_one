@@ -40,3 +40,8 @@ featured_image: /img/open-graph.png
 		</ul>
 
 </div>
+
+
+```js
+var bookmarklet = {
+```
