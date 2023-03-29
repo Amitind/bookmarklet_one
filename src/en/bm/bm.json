@@ -1,0 +1,9 @@
+{
+  "tags": [
+    "bookmarklets"
+  ],
+  "layout": "layouts/post.njk",
+  "permalink": "/bm/{{ page.fileSlug }}/",
+  "locale": "en",
+  "featured_image": "/img/open-graph.png"
+}

@@ -112,7 +112,7 @@ module.exports = function (eleventyConfig) {
 			formats = ['webp', 'auto'],
 			imgclass = '',
 		} = options;
-		console.log(alt);
+		// console.log(alt);
 		if (src.startsWith('/img/')) {
 			src = `./src${src}`;
 			// console.log(src);
@@ -210,10 +210,16 @@ module.exports = function (eleventyConfig) {
 		return Math.min.apply(null, numbers);
 	});
 
+	/**
+	 *  Filter out all tags that are not used for filtering
+	 * @param {array} tags - array of tags
+	 * @returns {array} - filtered array of tags
+	 */
+
 	function filterTagList(tags) {
 		return (tags || []).filter(
 			(tag) =>
-				['all', 'nav', 'post', 'posts', 'pages', 'page'].indexOf(
+				['all', 'nav', 'post', 'posts', 'pages', 'page','bookmarklets'].indexOf(
 					tag
 				) === -1
 		);
@@ -308,17 +314,13 @@ module.exports = function (eleventyConfig) {
 		})
 		.use(mdItContainer, 'idea', {
 			render: function (tokens, idx) {
-				var m = tokens[idx].info.trim().match(/^idea\s+(.*)$/);
-				if (tokens[idx].nesting === 1) {
-					//opening tag
-					return `<div class='alert bg-amber-200'>
-                  <div class='icon'>
-                    <img width='22' height='22' class='keep-original' src='/icons/idea.svg' alt='idea icon'>
-                  </div>`;
-				} else {
-					return '</div>';
-				}
-			},
+                var m = tokens[idx].info.trim().match(/^idea\s+(.*)$/);
+
+                return tokens[idx].nesting === 1 ? `<div class='alert bg-amber-200'>
+              <div class='icon'>
+                <img width='22' height='22' class='keep-original' src='/icons/idea.svg' alt='idea icon'>
+              </div>` : '</div>';
+            },
 		})
 		.use(mdItContainer, 'warning', {
 			render: function (tokens, idx) {
@@ -358,6 +360,17 @@ module.exports = function (eleventyConfig) {
 		return `<sup><a href="${url}" rel="noopener noreferrer" target="_blank">[${ref}]</a></sup>`;
 	});
 
+	eleventyConfig.addAsyncShortcode('bookmarklet', async function (code) {
+
+		const minifiedCode = await minify(code);
+		return `<pre class="language-js"><code class="language-js">javascript:${minifiedCode.code}</code></pre>`;
+	});
+	eleventyConfig.addAsyncShortcode('bookmarkletbtn', async function (code, {text = 'Bookmarklet'}={}) {
+
+		const minifiedCode = await minify(code);
+		return `<a class="border-blue-500 border-2 shadow-blue-500 shadow-[.3rem_.3rem_0_0_rgba(0,0,0,1)] hover:shadow-none transition px-3 py-1 " href="javascript:${encodeURI(minifiedCode.code)}" rel="nofollow noopener noreferrer" title="${text} Bookmarklet">${text}</a>`;
+	});
+
 	/** Meta data for tags
 	 * @param {string} tag - tag name , function will always convert tag to lowercase
 	 * @param {[object]} options - options object
@@ -366,9 +379,10 @@ module.exports = function (eleventyConfig) {
 	 * @example {% tagscolor "how to" %} or {% tagscolor tag %} or {% tagscolor tag key="class" %}
 	 */
 
-	function tagsMeta(tag, options = {}) {
-		const { key = 'class' } = options;
-		return _data.tags[tag.toLowerCase()][key] ?? '';
+	function tagsMeta(tag, {key = 'class'} = {}) {
+		// const { key = 'class' } = options;
+		// console.log(key,tag)
+		return _data?.tags[tag.toLowerCase()][key] ?? '';
 	}
 
 	eleventyConfig.addShortcode('tagsmeta', tagsMeta);

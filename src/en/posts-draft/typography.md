@@ -1,6 +1,6 @@
 ---
 title: Typography
-eleventyExcludeFromCollections: true
+# eleventyExcludeFromCollections: true
 eleventyNavigation:
   parent: meta
   key: typography
@@ -88,7 +88,7 @@ text with ref url {% ref "http://localhost:8000/allcomponents/" %}
 * to apply class to ul write attribute in new line
 {:.list-decimal .list-inside}
 
-to load bookmarklet after minifying
+to load js after minifying
 {% set js %}
 {% include "src/bm/qr_code.js" %}
 {% endset %}
@@ -98,12 +98,21 @@ to load bookmarklet after minifying
 javascript: {{js | jsmin | safe}}
 ```
 
-load bookmarklet directly without any filter
+load js directly without any filter
 
 ```js
 //generate QR Code
 javascript: {% include "src/bm/qr_code.js" %}
 ```
+
+import bookmarklet like this
+
+{% set js %}
+{% include "src/bm/qr_code.js" %}
+{% endset %}
+
+{% bookmarklet js %}
+{% bookmarkletbtn js, text="URL to QR" %}
 
 njk shortcode for highlight code
 

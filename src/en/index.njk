@@ -35,7 +35,16 @@ class="max-w-7xl mx-auto "
 
 </article>
 	<!-- Main End -->
+	<div class="max-w-7xl container my-10 md:mx-auto px-5">
+	<h2 class="text-2xl sm:text-3xl md:text-left text-center font-bold">Latest Blog Posts</h2>
+	</div>
 	{% set postslist = collections.posts | head(-3) %}
+	{% include "components/postslist.njk" %}
+
+	<div class="max-w-7xl container my-10 md:mx-auto px-5">
+	<h2 class="text-2xl sm:text-3xl md:text-left text-center font-bold">All Bookmarklets</h2>
+	</div>
+	{% set postslist = collections.bookmarklets | head(-3) %}
 	{% include "components/postslist.njk" %}
 
 	{# end of content block #}

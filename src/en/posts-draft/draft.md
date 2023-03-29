@@ -14,10 +14,11 @@ Screenshots and demos of the bookmarklet in action
 Testimonials from satisfied users
 for updates check back the post often to find new and intresting bookmarklets or if you having any error then also
 
-what are bookmarklets
 How do bookmarklets work
 How to install a bookmarklet
 How to run a bookmarklet
 How to edit a bookmarklet
 how to create a bookmarklets
 Bookmarklet maker page
+
+{% include "src/en/bm/url-qr-code.md" %}

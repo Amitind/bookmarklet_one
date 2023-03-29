@@ -45,6 +45,11 @@
       "class": "bg-red-500 text-white",
       "icon": "",
       "description": ""
+    },
+    "bookmarklets": {
+      "class": "bg-green-500 text-white",
+      "icon": "",
+      "description": ""
     }
   }
 }
