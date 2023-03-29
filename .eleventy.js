@@ -45,7 +45,7 @@ module.exports = function (eleventyConfig) {
 			console.log('draft');
 			break;
 		case 'local':
-			/* when draft set then load draft posts and remove normal posts */
+			/* when local set then load draft posts and normal posts */
 			// eleventyConfig.ignores.add('./src/en/posts-draft');
 			// eleventyConfig.ignores.add('./src/en/posts');
 			console.log('draft');
@@ -92,63 +92,54 @@ module.exports = function (eleventyConfig) {
   Register Shortcodes
   */
 
-	/* Image Optimize and multiple format generator,
-
-  alt = is file name
-  size = is alread passed
-  widths = pass [null] if do not want to generate 600 varient
-  formats = by default webp and orginal file format is generated,
-  imgclass = pass tailwind css classes want to opply on images
-  src = is only required field
-
-  use shortcode like this
-
-  {% image "./src/img/open-graph.png", imgclass="object-cover w-full h-64" %}
-  in markdown
-  {% image "./src/img/open-graph.png", sizes="", widths=['200'], imgclass="object-cover w-full" %}
-
-  using nunjucks shortcode because of async function
- */
-	eleventyConfig.addNunjucksAsyncShortcode(
-		'image',
-		async function (
-			src,
-			{
-				sizes = '', //"(min-width: 30em) 50vw, 100vw"
-				alt = path.basename(src, path.extname(src)),
-				widths = ['auto'],
-				formats = ['webp', 'auto'],
-				imgclass = '',
-			}
-		) {
+	/** Image Optimize and multiple format generator,
+	 * 	@param {string} src - is only required field
+	 * @param {string} [sizes] - is alread passed
+	 * @param {string} [alt] - is file name
+	 * @param {array} [widths] - pass [null] if do not want to generate 600 varient
+	 * @param {array} [formats] - by default webp and orginal file format is generated,
+	 * @param {string} [string] - pass tailwind css classes want to opply on images
+	 * @returns {element} - html img tag with srcset and sizes
+	 * @example {% image "./src/img/open-graph.png", imgclass="object-cover w-full h-64" %}
+	 * in markdown  {% image "./src/img/open-graph.png", sizes="", widths=['200'], imgclass="object-cover w-full" %}
+	 * using nunjucks shortcode because of async function
+	 * */
+	async function image(src, options = {}) {
+		let {
+			sizes = '', //"(min-width: 30em) 50vw, 100vw"
+			alt = path.basename(src, path.extname(src)),
+			widths = ['auto'],
+			formats = ['webp', 'auto'],
+			imgclass = '',
+		} = options;
+		console.log(alt);
+		if (src.startsWith('/img/')) {
+			src = `./src${src}`;
 			// console.log(src);
-			if (src.startsWith('/img/')) {
-				src = `./src${src}`;
-				// console.log(src);
-			}
-
-			let metadata = await Image(src, {
-				widths,
-				formats,
-				outputDir: './_site/img/',
-				urlPath: '/img/',
-				sharpOptions: {
-					animated: false,
-				},
-			});
-
-			let imageAttributes = {
-				class: imgclass,
-				alt,
-				sizes,
-				loading: 'lazy',
-				decoding: 'async',
-			};
-
-			// You bet we throw an error on missing alt in `imageAttributes` (alt="" works okay)
-			return Image.generateHTML(metadata, imageAttributes);
 		}
-	);
+
+		let metadata = await Image(src, {
+			widths,
+			formats,
+			outputDir: './_site/img/',
+			urlPath: '/img/',
+			sharpOptions: {
+				animated: false,
+			},
+		});
+
+		let imageAttributes = {
+			class: imgclass,
+			alt,
+			sizes,
+			loading: 'lazy',
+			decoding: 'async',
+		};
+
+		// You bet we throw an error on missing alt in `imageAttributes` (alt="" works okay)
+		return Image.generateHTML(metadata, imageAttributes);
+	}
+	eleventyConfig.addNunjucksAsyncShortcode('image', image);
 
 	/* Apply Filters */
 
@@ -363,9 +354,24 @@ module.exports = function (eleventyConfig) {
 
   */
 	eleventyConfig.addShortcode('ref', function (url, ref = 'ref') {
-		console.log(url, ref);
+		// console.log(url, ref);
 		return `<sup><a href="${url}" rel="noopener noreferrer" target="_blank">[${ref}]</a></sup>`;
 	});
+
+	/** Meta data for tags
+	 * @param {string} tag - tag name , function will always convert tag to lowercase
+	 * @param {[object]} options - options object
+	 * @param {[string]} options.key - meta key name , default is class
+	 * @returns {string|integer} returns requested meta key value it can be integer or string
+	 * @example {% tagscolor "how to" %} or {% tagscolor tag %} or {% tagscolor tag key="class" %}
+	 */
+
+	function tagsMeta(tag, options = {}) {
+		const { key = 'class' } = options;
+		return _data.tags[tag.toLowerCase()][key] ?? '';
+	}
+
+	eleventyConfig.addShortcode('tagsmeta', tagsMeta);
 
 	/* eleventy dev server */
 

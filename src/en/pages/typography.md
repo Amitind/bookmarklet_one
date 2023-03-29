@@ -107,13 +107,13 @@ javascript: {% include "src/bm/qr_code.js" %}
 
 njk shortcode for highlight code
 
-    {% highlight "js" %}
+{% highlight "js" %}
 
-    function myFunction() {
-      return true;
-    }
+function myFunction() {
+  return true;
+}
 
-    {% endhighlight %}
+{% endhighlight %}
 
 https://wordpress.com/support/markdown-quick-reference/
 

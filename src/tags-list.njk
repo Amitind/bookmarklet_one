@@ -17,8 +17,8 @@ layout: layouts/base.njk
       {% for tag in collections.tagList %}
       {% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
           <a
-          class="py-1 px-6 rounded-full capitalize shadow-xl shadow-blue-100 bg-blue-100 text-blue-500"
+          class="py-1 px-6 rounded-full capitalize shadow-xl shadow-blue-100 bg-blue-100 text-blue-500 {% tagsmeta tag %}"
           href="{{ tagUrl | url }}"
-          class="post-tag">{{ tag }}</a>
+          >{{ tag }}</a>
       {% endfor %}
   </div>

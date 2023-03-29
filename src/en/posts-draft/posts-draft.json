@@ -1,6 +1,6 @@
 {
   "tags": [
-    "posts"
+    "posts", "draft"
   ],
   "layout": "layouts/post.njk",
   "permalink": "/{{ page.fileSlug }}/",

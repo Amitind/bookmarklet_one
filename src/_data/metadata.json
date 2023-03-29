@@ -34,6 +34,17 @@
     "name": "Amit Yadav",
     "email": "hi[at]bookmarklet.one",
     "url": "author/url"
+  },
+  "tags": {
+    "how to": {
+      "class": "bg-blue-500 text-white",
+      "icon": "",
+      "description": ""
+    },
+    "draft": {
+      "class": "bg-red-500 text-white",
+      "icon": "",
+      "description": ""
+    }
   }
-
 }

@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@11ty/eleventy': 2.0.0-beta.1
+  '@11ty/eleventy': ^2.0.1
   '@11ty/eleventy-img': ^2.0.1
   '@11ty/eleventy-navigation': ^0.3.5
   '@11ty/eleventy-plugin-directory-output': ^1.0.1
@@ -27,7 +27,7 @@ specifiers:
   terser: ^5.14.2
 
 devDependencies:
-  '@11ty/eleventy': 2.0.0-beta.1
+  '@11ty/eleventy': 2.0.1
   '@11ty/eleventy-img': 2.0.1
   '@11ty/eleventy-navigation': 0.3.5
   '@11ty/eleventy-plugin-directory-output': 1.0.1
@@ -58,8 +58,8 @@ packages:
     resolution: {integrity: sha512-5R+DsT9LJ9tXiSQ4y+KLFppCkQyXhzAm1AIuBWE/sbU0hSXY5pkhoqQYEcPJQFg/nglL+wD55iv2j+7O96UAvg==}
     dev: true
 
-  /@11ty/eleventy-dev-server/1.0.1:
-    resolution: {integrity: sha512-lTj9uAvXeArmdoEF1qpBbSq6h4ZgCe7DPhYrl1XcZxe10kpH/e9noajBT9EBzNOzKBcYvVAIin/IbhUMyyUy/g==}
+  /@11ty/eleventy-dev-server/1.0.4:
+    resolution: {integrity: sha512-qVBmV2G1KF/0o5B/3fITlrrDHy4bONUI2YuN3/WJ3BNw4NU1d/we8XhKrlgq13nNvHoBx5czYp3LZt8qRG53Fg==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
@@ -69,11 +69,11 @@ packages:
       dev-ip: 1.0.1
       finalhandler: 1.2.0
       mime: 3.0.0
-      minimist: 1.2.7
-      morphdom: 2.6.1
+      minimist: 1.2.8
+      morphdom: 2.7.0
       please-upgrade-node: 3.2.0
       ssri: 8.0.1
-      ws: 8.12.0
+      ws: 8.13.0
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -143,14 +143,15 @@ packages:
       normalize-path: 3.0.0
     dev: true
 
-  /@11ty/eleventy/2.0.0-beta.1:
-    resolution: {integrity: sha512-j/V73NWO3i8VnVBWHytDbHxyexomKwrbHiDOLs3LyNaaB3MYZIvGYYf10NVLDO37Zq9CacIfP6a69Njjg9rJDg==}
+  /@11ty/eleventy/2.0.1:
+    resolution: {integrity: sha512-t8XVUbCJByhVEa1RzO0zS2QzbL3wPY8ot1yUw9noqiSHxJWUwv6jiwm1/MZDPTYtkZH2ZHvdQIRQ5/SjG9XmLw==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
       '@11ty/dependency-tree': 2.0.1
-      '@11ty/eleventy-dev-server': 1.0.1
+      '@11ty/eleventy-dev-server': 1.0.4
       '@11ty/eleventy-utils': 1.0.1
+      '@11ty/lodash-custom': 4.17.21
       '@iarna/toml': 2.2.5
       '@sindresorhus/slugify': 1.1.2
       bcp-47-normalize: 1.1.1
@@ -158,23 +159,20 @@ packages:
       cross-spawn: 7.0.3
       debug: 4.3.4
       dependency-graph: 0.11.0
-      ejs: 3.1.8
+      ejs: 3.1.9
       fast-glob: 3.2.12
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.11
       gray-matter: 4.0.3
       hamljs: 0.6.2
       handlebars: 4.7.7
       is-glob: 4.0.3
       iso-639-1: 2.1.15
       kleur: 4.1.5
-      liquidjs: 10.4.0
-      lodash.chunk: 4.2.0
-      lodash.get: 4.4.2
-      lodash.set: 4.3.2
-      luxon: 3.2.1
+      liquidjs: 10.7.0
+      luxon: 3.3.0
       markdown-it: 13.0.1
       micromatch: 4.0.5
-      minimist: 1.2.7
+      minimist: 1.2.8
       moo: 0.5.2
       multimatch: 5.0.0
       mustache: 4.2.0
@@ -187,11 +185,16 @@ packages:
       pug: 3.0.2
       recursive-copy: 2.0.14
       semver: 7.3.8
-      slugify: 1.6.5
+      slugify: 1.6.6
     transitivePeerDependencies:
       - bufferutil
       - supports-color
       - utf-8-validate
+    dev: true
+
+  /@11ty/lodash-custom/4.17.21:
+    resolution: {integrity: sha512-Mqt6im1xpb1Ykn3nbcCovWXK3ggywRJa+IXIdoz4wIIK+cvozADH63lexcuPpGS/gJ6/m2JxyyXDyupkMr5DHw==}
+    engines: {node: '>=14'}
     dev: true
 
   /@babel/helper-validator-identifier/7.18.6:
@@ -687,6 +690,11 @@ packages:
       color-string: 1.9.1
     dev: true
 
+  /commander/10.0.0:
+    resolution: {integrity: sha512-zS5PnTI22FIRM6ylNW8G4Ap0IEOyk62fhLSD0+uHRT9McRCLGpkVNvao4bjimpK/GShynyQkFFxHhwMcETmduA==}
+    engines: {node: '>=14'}
+    dev: true
+
   /commander/2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
     dev: true
@@ -827,7 +835,7 @@ packages:
     dependencies:
       acorn-node: 1.8.2
       defined: 1.0.0
-      minimist: 1.2.7
+      minimist: 1.2.8
     dev: true
 
   /dev-ip/1.0.1:
@@ -907,8 +915,8 @@ packages:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
     dev: true
 
-  /ejs/3.1.8:
-    resolution: {integrity: sha512-/sXZeMlhS0ArkfX2Aw780gJzXSMPnKjtspYZv+f3NiKLlubezAHDU5+9xz6gd3/NhG3txQCo6xlglmTS+oTGEQ==}
+  /ejs/3.1.9:
+    resolution: {integrity: sha512-rC+QVNMJWv+MtPgkt0y+0rVEIdbtxVADApW9JXrUVlzHetgcyczP/E7DJmWJ4fJCZF2cPcBk0laWO9ZHMG3DmQ==}
     engines: {node: '>=0.10.0'}
     hasBin: true
     dependencies:
@@ -1223,8 +1231,8 @@ packages:
       path-is-absolute: 1.0.1
     dev: true
 
-  /graceful-fs/4.2.10:
-    resolution: {integrity: sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==}
+  /graceful-fs/4.2.11:
+    resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
     dev: true
 
   /gray-matter/4.0.3:
@@ -1246,7 +1254,7 @@ packages:
     engines: {node: '>=0.4.7'}
     hasBin: true
     dependencies:
-      minimist: 1.2.7
+      minimist: 1.2.8
       neo-async: 2.6.2
       source-map: 0.6.1
       wordwrap: 1.0.0
@@ -1677,10 +1685,12 @@ packages:
       uc.micro: 1.0.6
     dev: true
 
-  /liquidjs/10.4.0:
-    resolution: {integrity: sha512-4fpR8KFJ96bXkzynK9Yo1jwn7sjOkJfKawSbEXINc39DZfy7r5SYtcAM5T/Ccg5n0xoZf6ap5Gap4VwFCJiQ1g==}
+  /liquidjs/10.7.0:
+    resolution: {integrity: sha512-AEgEgbybxc17h2WBl5DTzj1tNy18ANpM/KJ2LigkNBwd/8sBc0uDaJH/MnvUbv1t2Md5RArTTZj5Wq1MGncIbg==}
     engines: {node: '>=14'}
     hasBin: true
+    dependencies:
+      commander: 10.0.0
     dev: true
 
   /list-to-array/1.1.0:
@@ -1691,16 +1701,8 @@ packages:
     resolution: {integrity: sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q==}
     dev: true
 
-  /lodash.chunk/4.2.0:
-    resolution: {integrity: sha512-ZzydJKfUHJwHa+hF5X66zLFCBrWn5GeF28OHEr4WVWtNDXlQ/IjWKPBiikqKo2ne0+v6JgCgJ0GzJp8k8bHC7w==}
-    dev: true
-
   /lodash.deburr/4.1.0:
     resolution: {integrity: sha512-m/M1U1f3ddMCs6Hq2tAsYThTBDaAKFDX3dwDo97GEYzamXi9SqUpjWi/Rrj/gf3X2n8ktwgZrlP1z6E3v/IExQ==}
-    dev: true
-
-  /lodash.get/4.4.2:
-    resolution: {integrity: sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==}
     dev: true
 
   /lodash.isplainobject/4.0.6:
@@ -1709,10 +1711,6 @@ packages:
 
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
-    dev: true
-
-  /lodash.set/4.3.2:
-    resolution: {integrity: sha512-4hNPN5jlm/N/HLMCO43v8BXKq9Z7QdAGc/VGrRD61w8gN9g/6jF9A4L1pbUgBLCffi0w9VsXfTOij5x8iTyFvg==}
     dev: true
 
   /lower-case/1.1.4:
@@ -1728,6 +1726,11 @@ packages:
 
   /luxon/3.2.1:
     resolution: {integrity: sha512-QrwPArQCNLAKGO/C+ZIilgIuDnEnKx5QYODdDtbFaxzsbZcc/a7WFq7MhsVYgRlwawLtvOUESTlfJ+hc/USqPg==}
+    engines: {node: '>=12'}
+    dev: true
+
+  /luxon/3.3.0:
+    resolution: {integrity: sha512-An0UCfG/rSiqtAIiBPO0Y9/zAnHUZxAMiCpTd5h2smgsj7GGmcenvrvww2cqNA8/4A5ZrD1gJpHN2mIHZQF+Mg==}
     engines: {node: '>=12'}
     dev: true
 
@@ -1837,8 +1840,8 @@ packages:
       brace-expansion: 2.0.1
     dev: true
 
-  /minimist/1.2.7:
-    resolution: {integrity: sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==}
+  /minimist/1.2.8:
+    resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
     dev: true
 
   /minipass/3.3.4:
@@ -1856,7 +1859,7 @@ packages:
     resolution: {integrity: sha512-FP+p8RB8OWpF3YZBCrP5gtADmtXApB5AMLn+vdyA+PyxCjrCs00mjyUozssO33cwDeT3wNGdLxJ5M//YqtHAJw==}
     hasBin: true
     dependencies:
-      minimist: 1.2.7
+      minimist: 1.2.8
     dev: true
 
   /mkdirp/1.0.4:
@@ -1869,8 +1872,8 @@ packages:
     resolution: {integrity: sha512-iSAJLHYKnX41mKcJKjqvnAN9sf0LMDTXDEvFv+ffuRR9a1MIuXLjMNL6EsnDHSkKLTWNqQQ5uo61P4EbU4NU+Q==}
     dev: true
 
-  /morphdom/2.6.1:
-    resolution: {integrity: sha512-Y8YRbAEP3eKykroIBWrjcfMw7mmwJfjhqdpSvoqinu8Y702nAwikpXcNFDiIkyvfCLxLM9Wu95RZqo4a9jFBaA==}
+  /morphdom/2.7.0:
+    resolution: {integrity: sha512-8L8DwbdjjWwM/aNqj7BSoSn4G7SQLNiDcxCnMWbf506jojR6lNQ5YOmQqXEIE8u3C492UlkN4d0hQwz97+M1oQ==}
     dev: true
 
   /ms/2.0.0:
@@ -2142,7 +2145,7 @@ packages:
     hasBin: true
     dependencies:
       '@types/node': 17.0.45
-      minimist: 1.2.7
+      minimist: 1.2.8
       pngjs: 6.0.0
     dev: true
 
@@ -2261,7 +2264,7 @@ packages:
       detect-libc: 2.0.1
       expand-template: 2.0.3
       github-from-package: 0.0.0
-      minimist: 1.2.7
+      minimist: 1.2.8
       mkdirp-classic: 0.5.3
       napi-build-utils: 1.0.2
       node-abi: 3.22.0
@@ -2422,7 +2425,7 @@ packages:
     dependencies:
       deep-extend: 0.6.0
       ini: 1.3.8
-      minimist: 1.2.7
+      minimist: 1.2.8
       strip-json-comments: 2.0.1
     dev: true
 
@@ -2452,7 +2455,7 @@ packages:
     resolution: {integrity: sha512-K8WNY8f8naTpfbA+RaXmkaQuD1IeW9EgNEfyGxSqqTQukpVtoOKros9jUqbpEsSw59YOmpd8nCBgtqJZy5nvog==}
     dependencies:
       errno: 0.1.8
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.11
       junk: 1.0.3
       maximatch: 0.1.0
       mkdirp: 0.5.6
@@ -2611,8 +2614,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /slugify/1.6.5:
-    resolution: {integrity: sha512-8mo9bslnBO3tr5PEVFzMPIWwWnipGS0xVbYf65zxDqfNwmzYn1LpiKNrR6DlClusuvo+hDHd1zKpmfAe83NQSQ==}
+  /slugify/1.6.6:
+    resolution: {integrity: sha512-h+z7HKHYXj6wJU+AnS/+IH8Uh9fdcX1Lrhg1/VMdf9PwoBQXFcXiAdsy2tSK0P6gKwJLXp02r90ahUCqHk9rrw==}
     engines: {node: '>=8.0.0'}
     dev: true
 
@@ -2942,8 +2945,8 @@ packages:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
     dev: true
 
-  /ws/8.12.0:
-    resolution: {integrity: sha512-kU62emKIdKVeEIOIKVegvqpXMSTAMLJozpHZaJNDYqBjzlSYXQGviYwN1osDLJ9av68qHd4a2oSjd7yD4pacig==}
+  /ws/8.13.0:
+    resolution: {integrity: sha512-x9vcZYTrFPC7aSIbj7sRCYo7L/Xb8Iy+pW0ng0wt2vCJv7M9HOMy0UoN3rr+IFC7hb7vXoqS+P9ktyLLLhO+LA==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1

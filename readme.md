@@ -1,6 +1,7 @@
 ### Content
 
 * .html files are used when there is mostly no logic involved.
+* https://bookmarklet.one/typography/
 
 ### Layouts
 * Main layouts logic is in _includes folder
@@ -13,3 +14,7 @@
 
 * https://www.11ty.dev/docs/data-eleventy-supplied/
 * https://11ty.rocks/
+
+## Structure
+
+`src/bm` contains all bookmarklets code, bookmarklet code is prettiefied in .js
