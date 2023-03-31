@@ -30,7 +30,7 @@
 	h4:hover a,
 	h5:hover a,
 	h6:hover a {
-		@apply opacity-100 text-gray-300;
+		@apply inline-block text-gray-300;
 	}
 
 	/* .direct-link {
@@ -43,7 +43,7 @@
 		@apply text-blue-500;
 	} */
 	article a {
-		@apply text-blue-500;
+		@apply text-blue-700;
 	}
 
 	main[data-layout*='post'] article > p,

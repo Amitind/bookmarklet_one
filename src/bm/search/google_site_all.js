@@ -1,1 +1,2 @@
-location="http://www.google.com/search?num=100&q=site:" + escape(location.hostname); void 0
+// list all ranked pages on a site
+location = "http://www.google.com/search?num=100&q=site:" + escape(location.hostname); void 0

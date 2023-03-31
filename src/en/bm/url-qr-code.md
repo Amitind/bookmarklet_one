@@ -1,12 +1,12 @@
 ---
 title: URL to QR Code
 description: ""
-date: 2023-03-29
+# date: 2023-03-29
 featured_image: /img/open-graph.png
 custom_class: "prose"
 ---
 
-The URL to QR Code Bookmarklet is a handy tool that can make sharing links with others much easier.
+The {{title}} Bookmarklet is a handy tool that can make sharing links with others much easier.
 
 **With one click, Bookmarklet will turn URL of the current webpage into a QR code.**
 :::group {:.space-y-6 .py-6}
@@ -16,7 +16,7 @@ The URL to QR Code Bookmarklet is a handy tool that can make sharing links with 
 {% endset %}
 
 {% bookmarklet js %}
-{% bookmarkletbtn js, text="URL to QR" %}
+{% bookmarkletbtn js, text=title %}
 :::
 
 This means that you can easily share the link with friends, family, or colleagues by simply showing them the QR code or scanning it with your mobile phone.

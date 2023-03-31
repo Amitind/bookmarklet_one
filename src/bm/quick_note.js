@@ -2,7 +2,7 @@
 
 (function () {
 	let tab = window.open('about:blank', '_blank');
-	tab.document.write('Quick Note'); // where 'html' is a variable containing your HTML
+	tab.document.write('Enter your note here.');
 	tab.document.title = 'Quick Note';
 	tab.document.documentElement.setAttribute('contenteditable', '');
 	tab.document.close(); // to finish loading the page

@@ -274,7 +274,7 @@ module.exports = function (eleventyConfig) {
 			level: 2, // h2 and above all headings
 			permalink: markdownItAnchor.permalink.ariaHidden({
 				placement: 'after',
-				class: 'opacity-0 text-gray-300 font-semibold ml-1',
+				class: 'hidden text-gray-300 font-semibold ml-1',
 				symbol: '#',
 				// symbol:'<i class="absolute -left-5 text-gray-100 hover:text-gray-300"></i>',
 			}),
@@ -390,14 +390,14 @@ module.exports = function (eleventyConfig) {
 				encodededCode = encodeURIComponent(encodededCode);
 			}
 			// return '```js function(){' + encodededCode + '}```';
-			return `<pre class="language-js"><code class="language-js">javascript:${encodededCode}</code></pre>`;
+			return `<pre class="language-js my-6"><code class="language-js">javascript:${encodededCode}</code></pre>`;
 		}
 	);
 	eleventyConfig.addAsyncShortcode(
 		'bookmarkletbtn',
 		async function (code, { text = 'Bookmarklet' } = {}) {
 			const minifiedCode = await minify(code);
-			return `<div class="my-4">Drag me to bookmark bar: 👉🏻 <a class="border-gray-700 border-2 shadow-gray-700 shadow-[.3rem_.3rem_0_0_rgba(0,0,0,1)] hover:shadow-none transition px-3 py-1 text-gray-700" href="javascript:${encodeURIComponent(
+			return `<div class="my-6">Drag me to bookmark bar: 👉🏻 <a class="border-gray-700 border-2 shadow-gray-700 shadow-custom hover:shadow-none transition px-3 py-1 text-gray-700" href="javascript:${encodeURIComponent(
 				minifiedCode.code
 			)}" rel="nofollow noopener noreferrer" title="${text} Bookmarklet">${text}</a></div>`;
 		}
