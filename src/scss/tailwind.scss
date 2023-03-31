@@ -46,18 +46,17 @@
 		@apply text-blue-700;
 	}
 
-	main[data-layout*='post'] article > p,
-	main[data-layout*='page'] article > p {
+	article >  p {
 		@apply my-4 leading-7;
 	}
-	main[data-layout*='post'] article > ul,
+/* 	main[data-layout*='post'] article > ul,
 	main[data-layout*='page'] article > ul {
 		@apply my-4 leading-7;
 	}
 	main[data-layout*='post'] article > ol,
 	main[data-layout*='page'] article > ol {
 		@apply my-4 leading-7;
-	}
+	} */
 	/*  main[data-layout="post"] a:hover{
         @apply text-blue-700
     } */

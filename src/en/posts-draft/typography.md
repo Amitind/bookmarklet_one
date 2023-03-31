@@ -1,11 +1,15 @@
 ---
 title: Typography
 # eleventyExcludeFromCollections: true
+# eleventyNavigation:
+#   parent: meta
+#   key: typography
+#   title: Typography
+#   order: 3
 eleventyNavigation:
-  parent: meta
-  key: typography
-  title: Typography
-  order: 3
+  parent: primary
+  key: Typography
+  order: 1
 ---
 
 ## h1 heading{:.text-4xl .font-bold}

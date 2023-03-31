@@ -1,0 +1,24 @@
+{# use it like this
+	{% set footnavlist = collections.posts | head(-3) %}
+	{% include "components/footnav.njk" %}
+ #}
+	{%- if footnavlist %}
+		{%- set nextPost = footnavlist | getNextCollectionItem(page) %}
+		{%- set previousPost = footnavlist | getPreviousCollectionItem(page) %}
+		{%- if nextPost or previousPost %}
+			<ul class='flex flex-wrap justify-around font-heading gap-3 py-4 mt-8 bg-gray-200'>
+				{%- if previousPost %}
+					<li>
+						<span class='font-bold'>Previous:</span>
+						<a href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a>
+					</li>
+				{% endif %}
+				{%- if nextPost %}
+					<li>
+						<span class='font-bold'>Next:</span>
+						<a href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a>
+					</li>
+				{% endif %}
+			</ul>
+		{%- endif %}
+	{%- endif %}
