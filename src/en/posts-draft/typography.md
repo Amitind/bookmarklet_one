@@ -129,3 +129,10 @@ https://wordpress.com/support/markdown-quick-reference/
 > quted text
 
 `simplecode`
+
+{% renderTemplate "md" %}
+
+use renderTemplate
+{% endrenderTemplate %}
+
+==njk macros are powerfull to create reusable code==

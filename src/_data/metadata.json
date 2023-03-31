@@ -37,17 +37,22 @@
   },
   "tags": {
     "how to": {
-      "class": "bg-blue-500 text-white",
-      "icon": "",
+      "class": "bg-blue-800 text-white",
+      "icon": "idea.svg",
       "description": ""
     },
     "draft": {
-      "class": "bg-red-500 text-white",
-      "icon": "",
+      "class": "bg-red-800 text-white",
+      "icon": "info.svg",
       "description": ""
     },
     "bookmarklets": {
-      "class": "bg-green-500 text-white",
+      "class": "bg-green-800 text-white",
+      "icon": "",
+      "description": ""
+    },
+    "tool":{
+      "class": "bg-yellow-800 text-white",
       "icon": "",
       "description": ""
     }

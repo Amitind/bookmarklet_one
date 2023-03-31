@@ -19,6 +19,9 @@ const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 
 const pluginNavigation = require('@11ty/eleventy-navigation');
 
+// https://www.11ty.dev/docs/plugins/render/
+const { EleventyRenderPlugin } = require('@11ty/eleventy');
+
 /* https://www.npmjs.com/package/eleventy-plugin-gen-favicons */
 const faviconsPlugin = require('eleventy-plugin-gen-favicons');
 const Image = require('@11ty/eleventy-img');
@@ -68,12 +71,21 @@ module.exports = function (eleventyConfig) {
 	// Copy the `img` and `css` folders to the output https://www.11ty.dev/docs/copy/
 	eleventyConfig.addPassthroughCopy('src/img/open-graph.png');
 	eleventyConfig.addPassthroughCopy('src/img/*.gif');
-	eleventyConfig.addPassthroughCopy({ 'src/public/': '/' });
+	eleventyConfig.addPassthroughCopy({
+		'src/public/css': '/css',
+		'src/public/icons': '/icons',
+		'src/public/img': '/img',
+		'src/public/js/*.min.js': '/js',
+	});
+	// eleventyConfig.addPassthroughCopy({ 'src/public/icons': '/icons' });
+	// eleventyConfig.addPassthroughCopy({ 'src/public/img': '/img' });
+	// eleventyConfig.addPassthroughCopy({ 'src/public/js/*.min.js': '/js' });
 
 	/* Plugins */
 	eleventyConfig.addPlugin(pluginRss); // absoluteUrl filter from this plugin
 	eleventyConfig.addPlugin(pluginSyntaxHighlight); // highlight shortcode
 	eleventyConfig.addPlugin(pluginNavigation);
+	eleventyConfig.addPlugin(EleventyRenderPlugin); // render shortcode {% renderTemplate "md" %} {% endrenderTemplate %}
 
 	eleventyConfig.addPlugin(faviconsPlugin, { manifestData: _data.manifest }); // favicon shortcode
 	eleventyConfig.setQuietMode(false); // added for below plugin to work without noise
@@ -219,9 +231,14 @@ module.exports = function (eleventyConfig) {
 	function filterTagList(tags) {
 		return (tags || []).filter(
 			(tag) =>
-				['all', 'nav', 'post', 'posts', 'pages', 'page','bookmarklets'].indexOf(
-					tag
-				) === -1
+				[
+					'all',
+					'nav',
+					'post',
+					'posts',
+					'pages',
+					'page',
+				].indexOf(tag) === -1
 		);
 	}
 
@@ -314,13 +331,15 @@ module.exports = function (eleventyConfig) {
 		})
 		.use(mdItContainer, 'idea', {
 			render: function (tokens, idx) {
-                var m = tokens[idx].info.trim().match(/^idea\s+(.*)$/);
+				var m = tokens[idx].info.trim().match(/^idea\s+(.*)$/);
 
-                return tokens[idx].nesting === 1 ? `<div class='alert bg-amber-200'>
+				return tokens[idx].nesting === 1
+					? `<div class='alert bg-amber-200'>
               <div class='icon'>
                 <img width='22' height='22' class='keep-original' src='/icons/idea.svg' alt='idea icon'>
-              </div>` : '</div>';
-            },
+              </div>`
+					: '</div>';
+			},
 		})
 		.use(mdItContainer, 'warning', {
 			render: function (tokens, idx) {
@@ -360,29 +379,49 @@ module.exports = function (eleventyConfig) {
 		return `<sup><a href="${url}" rel="noopener noreferrer" target="_blank">[${ref}]</a></sup>`;
 	});
 
-	eleventyConfig.addAsyncShortcode('bookmarklet', async function (code) {
-
-		const minifiedCode = await minify(code);
-		return `<pre class="language-js"><code class="language-js">javascript:${minifiedCode.code}</code></pre>`;
-	});
-	eleventyConfig.addAsyncShortcode('bookmarkletbtn', async function (code, {text = 'Bookmarklet'}={}) {
-
-		const minifiedCode = await minify(code);
-		return `<a class="border-blue-500 border-2 shadow-blue-500 shadow-[.3rem_.3rem_0_0_rgba(0,0,0,1)] hover:shadow-none transition px-3 py-1 " href="javascript:${encodeURI(minifiedCode.code)}" rel="nofollow noopener noreferrer" title="${text} Bookmarklet">${text}</a>`;
-	});
+	eleventyConfig.addAsyncShortcode(
+		'bookmarklet',
+		async function (code, options = {}) {
+			const { encode = false } = options;
+			const minifiedCode = await minify(code);
+			let encodededCode = minifiedCode.code;
+			/* Encode value when needed */
+			if (encode) {
+				encodededCode = encodeURIComponent(encodededCode);
+			}
+			// return '```js function(){' + encodededCode + '}```';
+			return `<pre class="language-js"><code class="language-js">javascript:${encodededCode}</code></pre>`;
+		}
+	);
+	eleventyConfig.addAsyncShortcode(
+		'bookmarkletbtn',
+		async function (code, { text = 'Bookmarklet' } = {}) {
+			const minifiedCode = await minify(code);
+			return `<div class="my-4">Drag me to bookmark bar: 👉🏻 <a class="border-gray-700 border-2 shadow-gray-700 shadow-[.3rem_.3rem_0_0_rgba(0,0,0,1)] hover:shadow-none transition px-3 py-1 text-gray-700" href="javascript:${encodeURIComponent(
+				minifiedCode.code
+			)}" rel="nofollow noopener noreferrer" title="${text} Bookmarklet">${text}</a></div>`;
+		}
+	);
 
 	/** Meta data for tags
 	 * @param {string} tag - tag name , function will always convert tag to lowercase
 	 * @param {[object]} options - options object
-	 * @param {[string]} options.key - meta key name , default is class
+	 * @param {[string]} options.key - meta key name , default is class,
 	 * @returns {string|integer} returns requested meta key value it can be integer or string
 	 * @example {% tagscolor "how to" %} or {% tagscolor tag %} or {% tagscolor tag key="class" %}
 	 */
 
-	function tagsMeta(tag, {key = 'class'} = {}) {
-		// const { key = 'class' } = options;
-		// console.log(key,tag)
-		return _data?.tags[tag.toLowerCase()][key] ?? '';
+	function tagsMeta(tag, { key = 'class' } = {}) {
+		if (!_data.tags[tag.toLowerCase()]) {
+			console.error(tag, "category doesn't exist in metadata.json")
+			return '';
+		}
+		let keyValue = _data?.tags[tag.toLowerCase()][key] ?? '';
+		if (key === 'icon') {
+			return `<img width='16' height='16' class='keep-original inline-flex justify-center items-center mx-1 h-4 w-auto' src='/icons/${keyValue}' alt='${key} icon'>`;
+		}
+
+		return keyValue;
 	}
 
 	eleventyConfig.addShortcode('tagsmeta', tagsMeta);

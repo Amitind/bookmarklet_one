@@ -46,13 +46,25 @@
 		@apply text-blue-500;
 	}
 
-	main[data-layout*='post'] article,
-	main[data-layout*='page'] article {
-		@apply space-y-4;
+	main[data-layout*='post'] article > p,
+	main[data-layout*='page'] article > p {
+		@apply my-4 leading-7;
+	}
+	main[data-layout*='post'] article > ul,
+	main[data-layout*='page'] article > ul {
+		@apply my-4 leading-7;
+	}
+	main[data-layout*='post'] article > ol,
+	main[data-layout*='page'] article > ol {
+		@apply my-4 leading-7;
 	}
 	/*  main[data-layout="post"] a:hover{
         @apply text-blue-700
     } */
+
+	mark{
+		@apply bg-amber-200 px-2;
+	}
 }
 @layer components {
 	/* alert boxes */

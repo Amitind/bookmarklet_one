@@ -87,6 +87,6 @@ javascript:(()=>{
 
 Now you can easily convert JavaScript code to Bookmarklets,
 
-If you find it little bit difficult to make bookmarklet then you can take help of bookmarklet maker tools.
+If you find it little bit difficult to make bookmarklet then you can take help of [bookmarklet maker tools](/bookmarklet-maker/).
 
 By doing so not extra script always loads on everypage, script will run only when you run it.
