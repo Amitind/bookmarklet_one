@@ -9,40 +9,26 @@ permalink: "/"
 {# in home we are extending base layout and adding lang code, here just adding content block #}
 {%- block content %}
 
-		<div class="main-container -mt-6 pt-6 bg-gray-100">
-		<div class="px-5 py-10 text-center space-y-2 text-gray-700"
-			>
-			<h1 class="text-3xl sm:text-4xl font-bold ">{{ title }}</h1>
-			<p class="text-gray-700">{{subtitle}}</p>
-      {# <time class="text-gray-500 text-sm py-2" datetime="{{ page.date | htmlDateString }}">Updated on: {{ page.date | readableDate }}</time> #}
-      <div class="w-full">
-      {%- for tag in tags | filterTagList %}
-        {%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-          <a href="{{ tagUrl | url }}" class="post-tag px-3 py-1 text-xs capitalize rounded-full shadow-xl shadow-blue-100 bg-blue-100 text-blue-500 {% tagsmeta tag %}">{{ tag }}</a>
-      {%- endfor %}
-      </div>
-		</div>
-	</div>
-
-
 	<!-- Main Start -->
-<article
+	{% include "partials/hero.njk" %}
+
+	<article
 class="max-w-7xl mx-auto "
 >
-	<div class="main-container pt-6 p-5">
-{# //TODO: update content here #}
-	</div>
+		<div class="main-container pt-6 p-5">
+			{# //TODO: update content here #}
+		</div>
 
-</article>
+	</article>
 	<!-- Main End -->
 	<div class="max-w-7xl container my-10 md:mx-auto px-5">
-	<h2 class="text-2xl sm:text-3xl md:text-left text-center font-bold">Latest Blog Posts</h2>
+		<h2 class="text-2xl sm:text-3xl md:text-left text-center font-bold">Latest Blog Posts</h2>
 	</div>
 	{% set postslist = collections.posts | head(-3) %}
 	{% include "components/postslist.njk" %}
 
 	<div class="max-w-7xl container my-10 md:mx-auto px-5">
-	<h2 class="text-2xl sm:text-3xl md:text-left text-center font-bold">All Bookmarklets</h2>
+		<h2 class="text-2xl sm:text-3xl md:text-left text-center font-bold">All Bookmarklets</h2>
 	</div>
 	{% set postslist = collections.bookmarklets | head(-3) %}
 	{% include "components/postslist.njk" %}

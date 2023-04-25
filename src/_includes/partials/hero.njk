@@ -1,0 +1,21 @@
+<div class="main-container pt-6 bg-gray-100">
+	<div class="px-5 py-10 text-center space-y-2 text-gray-700"
+			>
+		<h1 class="text-3xl sm:text-4xl font-bold ">{{ title }}</h1>
+		 {% if subtitle and showSubtitle %}
+        <p class="text-gray-700">{{ subtitle }}</p>
+        {% endif %}
+        {# page.date will always be present because if date is missing in frontmatter eleventy picks date from git file that will always be presnet date if built on netlify #}
+		{% if showTime %}
+        <time class="text-gray-700 text-sm py-2" datetime="{{ page.date | htmlDateString }}">Updated on: {{ page.date | readableDate }}</time>
+        {% endif%}
+        {% if tags %}
+		<div class="w-full">
+			{%- for tag in tags | filterTagList %}
+				{%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+				<a href="{{ tagUrl | url }}" class="post-tag px-3 py-1 text-xs rounded-full shadow-xl shadow-blue-100 uppercase {% tagsmeta tag %}">{{ tag }}</a>
+			{%- endfor %}
+		</div>
+        {% endif %}
+	</div>
+</div>

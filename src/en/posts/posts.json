@@ -6,5 +6,6 @@
   "permalink": "/{{ page.fileSlug }}/",
   "locale": "en",
   "custom_class": "",
+  "showTime": true,
   "featured_image": "/img/open-graph.png"
 }

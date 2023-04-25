@@ -231,14 +231,9 @@ module.exports = function (eleventyConfig) {
 	function filterTagList(tags) {
 		return (tags || []).filter(
 			(tag) =>
-				[
-					'all',
-					'nav',
-					'post',
-					'posts',
-					'pages',
-					'page',
-				].indexOf(tag) === -1
+				['all', 'nav', 'post', 'posts', 'pages', 'page'].indexOf(
+					tag
+				) === -1
 		);
 	}
 
@@ -397,7 +392,7 @@ module.exports = function (eleventyConfig) {
 		'bookmarkletbtn',
 		async function (code, { text = 'Bookmarklet' } = {}) {
 			const minifiedCode = await minify(code);
-			return `<div class="my-6">Drag me to bookmark bar: 👉🏻 <a class="border-gray-700 border-2 shadow-gray-700 shadow-custom hover:shadow-none transition px-3 py-1 text-gray-700" href="javascript:${encodeURIComponent(
+			return `<div class="my-6">Drag me to bookmark bar: 👉🏻 <a class="border-gray-700 border-2 shadow-gray-700 shadow-custom hover:shadow-none transition px-3 py-1 text-gray-700 inline-block" role="button" href="javascript:${encodeURIComponent(
 				minifiedCode.code
 			)}" rel="nofollow noopener noreferrer" title="${text} Bookmarklet">${text}</a></div>`;
 		}
@@ -413,7 +408,7 @@ module.exports = function (eleventyConfig) {
 
 	function tagsMeta(tag, { key = 'class' } = {}) {
 		if (!_data.tags[tag.toLowerCase()]) {
-			console.error(tag, "category doesn't exist in metadata.json")
+			console.error(tag, "category doesn't exist in metadata.json");
 			return '';
 		}
 		let keyValue = _data?.tags[tag.toLowerCase()][key] ?? '';

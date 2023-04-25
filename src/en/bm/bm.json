@@ -5,5 +5,7 @@
   "layout": "layouts/bookmarklet.njk",
   "permalink": "/bm/{{ page.fileSlug }}/",
   "locale": "en",
+  "showTime": true,
+  "showSubtitle": true,
   "featured_image": "/img/open-graph.png"
 }

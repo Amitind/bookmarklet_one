@@ -19,6 +19,7 @@ layout: layouts/base.njk
           <a
           class="py-1 px-6 rounded-full shadow-xl shadow-blue-100 uppercase {% tagsmeta tag %}"
           href="{{ tagUrl | url }}"
+          title="{{ tag }} ({{collections[tag].length}})"
           >{{ tag }}</a>
       {% endfor %}
   </div>

@@ -2,20 +2,8 @@
 layout: layouts/base.njk
 templateClass: bookmarklet
 ---
-<div class="main-container pt-6 bg-gray-100">
-	<div class="px-5 py-10 text-center space-y-2 text-gray-700"
-			>
-		<h1 class="text-3xl sm:text-4xl font-bold ">{{ title }}</h1>
-		<p class="text-gray-700">{{subtitle}}</p>
-		<time class="text-gray-700 text-sm py-2" datetime="{{ page.date | htmlDateString }}">Updated on: {{ page.date | readableDate }}</time>
-		<div class="w-full">
-			{%- for tag in tags | filterTagList %}
-				{%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-				<a href="{{ tagUrl | url }}" class="post-tag px-3 py-1 text-xs rounded-full shadow-xl shadow-blue-100 uppercase {% tagsmeta tag %}">{{ tag }}</a>
-			{%- endfor %}
-		</div>
-	</div>
-</div>
+
+{% include "partials/hero.njk" %}
 
 <article class="max-w-4xl mx-auto p-6 {{ custom_class }}">
 	{{ content | safe }}

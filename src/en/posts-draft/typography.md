@@ -140,3 +140,6 @@ use renderTemplate
 {% endrenderTemplate %}
 
 ==njk macros are powerfull to create reusable code==
+
+njk include vs import
+
