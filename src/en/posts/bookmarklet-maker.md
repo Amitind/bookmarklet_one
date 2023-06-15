@@ -1,5 +1,5 @@
 ---
-title: How To Make Bookmarklet
+title: Bookmarklet Maker
 description: 'Bookmarklet Maker is a powerful tool that enables you to create your own custom bookmarklets, allowing you to enhance your productivity and streamline your workflow. '
 date: 2023-03-31
 tags:
