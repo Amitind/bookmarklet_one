@@ -33,7 +33,7 @@ const CleanCSS = require('clean-css'); //cssmin
 const htmlmin = require('html-minifier'); //htmlmin
 
 /* importy _data file */
-const _data = require('./src/_data/metadata.json');
+const _metadata = require('./src/_data/metadata.json');
 
 module.exports = function (eleventyConfig) {
 	// Merge data instead of overriding https://www.11ty.dev/docs/data-deep-merge/
@@ -77,9 +77,6 @@ module.exports = function (eleventyConfig) {
 		'src/public/img': '/img',
 		'src/public/js/*.min.js': '/js',
 	});
-	// eleventyConfig.addPassthroughCopy({ 'src/public/icons': '/icons' });
-	// eleventyConfig.addPassthroughCopy({ 'src/public/img': '/img' });
-	// eleventyConfig.addPassthroughCopy({ 'src/public/js/*.min.js': '/js' });
 
 	/* Plugins */
 	eleventyConfig.addPlugin(pluginRss); // absoluteUrl filter from this plugin
@@ -87,7 +84,9 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPlugin(pluginNavigation);
 	eleventyConfig.addPlugin(EleventyRenderPlugin); // render shortcode {% renderTemplate "md" %} {% endrenderTemplate %}
 
-	eleventyConfig.addPlugin(faviconsPlugin, { manifestData: _data.manifest }); // favicon shortcode
+	eleventyConfig.addPlugin(faviconsPlugin, {
+		manifestData: _metadata.manifest,
+	}); // favicon shortcode
 	eleventyConfig.setQuietMode(false); // added for below plugin to work without noise
 	eleventyConfig.addPlugin(directoryOutputPlugin, {
 		// Customize columns
@@ -407,11 +406,11 @@ module.exports = function (eleventyConfig) {
 	 */
 
 	function tagsMeta(tag, { key = 'class' } = {}) {
-		if (!_data.tags[tag.toLowerCase()]) {
+		if (!_metadata.tags[tag.toLowerCase()]) {
 			console.error(tag, "category doesn't exist in metadata.json");
 			return '';
 		}
-		let keyValue = _data?.tags[tag.toLowerCase()][key] ?? '';
+		let keyValue = _metadata?.tags[tag.toLowerCase()][key] ?? '';
 		if (key === 'icon') {
 			return `<img width='16' height='16' class='keep-original inline-flex justify-center items-center mx-1 h-4 w-auto' src='/icons/${keyValue}' alt='${key} icon'>`;
 		}
