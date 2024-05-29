@@ -1,7 +1,7 @@
 ---
 title: URL to QR Code
 description: ""
-# date: 2023-03-29
+date: 2024-05-29
 featured_image: /img/open-graph.png
 custom_class: "prose"
 ---
