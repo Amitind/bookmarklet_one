@@ -1,34 +1,57 @@
 ---
 title: Google Site Search
-description: 'Instantly search all indexed pages of any website through Google with a single click'
-tags:
-    - SEO
-# date: 2023-03-31
+description: 'Instantly search within any website using Google site: operator with one click'
 featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---
 
-The {{title}} Bookmarklet is a powerful SEO and research tool that streamlines site-specific Google searches.
+The {{title}} Bookmarklet is a powerful search tool for exploring website content.
 
-**With one click, this bookmarklet performs a Google site: search for the current website, revealing all its indexed pages.** For example, if you're on `example.com`, it automatically searches for `site:example.com`.
+**With one click, this bookmarklet performs a Google site: search for the current website, helping you find specific content within any domain.**
 
-This tool is invaluable for:
+Perfect for searching within large websites, finding specific articles, or discovering content that's hard to locate through regular navigation. Simply click while on any website to see all its pages indexed by Google.
 
--   SEO professionals checking website indexing
--   Content creators finding specific articles
--   Researchers exploring site content
--   Users searching within a specific domain
--   Developers auditing site structure
+Search capabilities:
+{:.mb-2}
 
-You can enhance your search by adding keywords after the site: operator to find specific content within the website.
+-   Instant site-specific search
+-   Uses Google's powerful index
+-   Find hidden or archived content
+-   Search within any domain
+-   Add custom search terms
+    {: .list-inside .list-disc }
 
 {% set js %}
-{% include "src/bm/search/google_site_all.js" %}
+{% include "src/bm/google-site-search.js" %}
 {% endset %}
 
 {% bookmarklet js %}
 {% bookmarkletbtn js, text=title %}
 
+:::info
+The above bookmarklet searches all pages on the current website.
+:::
+
+{% set js %}
+{% include "src/bm/google-site-search-keyword.js" %}
+{% endset %}
+
+{% bookmarklet js %}
+{% bookmarkletbtn js, text="Google Site Search with Keyword" %}
+
+:::info
+This version prompts for a keyword first, then searches for that term within the current website.
+:::
+
 ## Why Use the Google Site Search Bookmarklet? {:.text-3xl .font-bold}
 
-This efficient tool transforms how you explore websites through Google's index. Perfect for SEO specialists, content researchers, and anyone needing to search within a specific domain. Simply click while on any website to instantly see all its indexed pages. Add your own search terms to narrow down results and find exactly what you're looking for.
+This efficient tool helps you explore websites more thoroughly using Google's search capabilities. Perfect for researchers, content explorers, and anyone who needs to find specific information within a website. Choose between searching all pages or searching with a specific keyword.
+
+Features comparison:
+{:.mb-2}
+
+-   Basic version: Instantly shows all indexed pages
+-   Keyword version: Prompts for search term first
+-   Both use Google's site: operator
+-   Both work on any website
+    {: .list-inside .list-disc }
