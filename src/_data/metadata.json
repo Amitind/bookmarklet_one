@@ -1,65 +1,85 @@
 {
-  "manifest": {
-    "name": "Bookmarklets",
-    "short_name": "Bookmarklet",
-    "start_url": ".",
-    "description": "",
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
-    "display": "standalone"
-  },
-  "title": "Bookmarklets",
-  "subtitle": "Best Bookmarklets",
-  "dir": "ltr",
-  "social": {
-    "fb": "",
-    "twitter": "",
-    "insta": "",
-    "email": "hi[at]bookmarklet.one"
-  },
-  "url": "https://bookmarklet.one/",
-  "locale": "en",
-  "description": "meta description",
-  "feed": {
-    "subtitle": "feed subtitle",
-    "filename": "feed.xml",
-    "path": "/feed/feed.xml",
-    "id": "https://bookmarklet.one/"
-  },
-  "jsonfeed": {
-    "path": "/feed/feed.json",
-    "url": "https://bookmarklet.one/feed/feed.json"
-  },
-  "author": {
-    "name": "Amit Yadav",
-    "email": "hi[at]bookmarklet.one",
-    "url": "author/url"
-  },
-  "tags": {
-    "how to": {
-      "class": "bg-blue-700 text-white",
-      "icon": "idea.svg",
-      "description": ""
-    },
-    "draft": {
-      "class": "bg-red-700 text-white",
-      "icon": "info.svg",
-      "description": ""
-    },
-    "bookmarklets": {
-      "class": "bg-green-700 text-white",
-      "icon": "",
-      "description": ""
-    },
-    "tool":{
-      "class": "bg-amber-700 text-white",
-      "icon": "",
-      "description": ""
-    },
-    "seo":{
-      "class": "bg-violet-700 text-white",
-      "icon": "",
-      "description": ""
-    }
-  }
+	"manifest": {
+		"name": "Bookmarklets",
+		"short_name": "Bookmarklet",
+		"start_url": ".",
+		"description": "",
+		"theme_color": "#ffffff",
+		"background_color": "#ffffff",
+		"display": "standalone"
+	},
+	"title": "Bookmarklets",
+	"subtitle": "Best Bookmarklets",
+	"dir": "ltr",
+	"social": {
+		"fb": "",
+		"twitter": "",
+		"insta": "",
+		"email": "hi[at]bookmarklet.one"
+	},
+	"url": "https://bookmarklet.one/",
+	"locale": "en",
+	"description": "meta description",
+	"feed": {
+		"subtitle": "feed subtitle",
+		"filename": "feed.xml",
+		"path": "/feed/feed.xml",
+		"id": "https://bookmarklet.one/"
+	},
+	"jsonfeed": {
+		"path": "/feed/feed.json",
+		"url": "https://bookmarklet.one/feed/feed.json"
+	},
+	"author": {
+		"name": "Amit Yadav",
+		"email": "hi[at]bookmarklet.one",
+		"url": "author/url"
+	},
+	"tags": {
+		"how to": {
+			"class": "bg-blue-700 text-white",
+			"icon": "idea.svg",
+			"description": ""
+		},
+		"draft": {
+			"class": "bg-red-700 text-white",
+			"icon": "info.svg",
+			"description": ""
+		},
+		"bookmarklets": {
+			"class": "bg-green-700 text-white",
+			"icon": "",
+			"description": ""
+		},
+		"tool": {
+			"class": "bg-amber-700 text-white",
+			"icon": "",
+			"description": ""
+		},
+		"seo": {
+			"class": "bg-violet-700 text-white",
+			"icon": "",
+			"description": ""
+		},
+		"productivity": {
+			"class": "bg-teal-700 text-white",
+			"icon": "",
+			"description": ""
+		},
+		"translation": {
+			"class": "bg-indigo-700 text-white",
+			"icon": "",
+			"description": ""
+		},
+		"security": {
+			"class": "bg-red-600 text-white",
+			"icon": "",
+			"description": ""
+		},
+		"search": {
+			"class": "bg-purple-700 text-white",
+			"icon": "",
+			"description": ""
+		}
+	}
 }
