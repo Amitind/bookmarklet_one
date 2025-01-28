@@ -21,5 +21,3 @@ Perfect for users on limited bandwidth, those trying to avoid distractions, or a
 ## Why Use the Remove Images Bookmarklet? {:.text-3xl .font-bold}
 
 This practical tool instantly transforms any image-heavy webpage into a lightweight, text-only version. Ideal for users with limited internet connectivity, readers who prefer distraction-free content, and developers testing text-only layouts. It significantly reduces page load times and data usage while maintaining the core content. Works seamlessly across all major browsers and websites.
-
-Keywords: remove images, text-only browsing, bandwidth saving, distraction-free reading, webpage optimization

@@ -30,5 +30,3 @@ Perfect for researchers, developers, and users who need to interact with web con
 This essential tool restores your browser's natural functionality on restrictive websites. Ideal for web developers, researchers, and users who need full browser capabilities for legitimate purposes. Simply click the bookmarklet to restore right-click functionality instantly on any webpage that has disabled it.
 
 _Note: Please use responsibly and respect website content policies and copyright restrictions. This tool is intended for legitimate use cases only._
-
-Keywords: enable right click, restore context menu, web development tool, browser functionality, right-click unblock

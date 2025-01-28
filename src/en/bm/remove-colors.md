@@ -21,5 +21,3 @@ This tool is essential for accessibility testing, ensuring content remains reada
 ## Why Use the Remove Colors Bookmarklet? {:.text-3xl .font-bold}
 
 This specialized tool helps ensure web content is accessible to all users, including those with color vision deficiencies. Perfect for web developers, UX designers, and accessibility specialists who need to verify their content works without color cues. Simply click the bookmarklet to strip all colors, revealing potential accessibility issues instantly. Works on any webpage across all major browsers.
-
-Keywords: remove colors, accessibility testing, color contrast, web development tool, color-blind friendly
