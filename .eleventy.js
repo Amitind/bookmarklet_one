@@ -62,6 +62,7 @@ module.exports = function (eleventyConfig) {
 
 	/* Files to watch and reload the build */
 	// watch files to reload
+	eleventyConfig.addWatchTarget('./src/bm');
 	eleventyConfig.addWatchTarget('./tailwind.config.js');
 	// eleventyConfig.addWatchTarget("./src/scss/tailwind.scss");
 	// eleventyConfig.addWatchTarget("./src/en/css/main.css");
