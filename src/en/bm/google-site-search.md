@@ -1,6 +1,7 @@
 ---
 title: Google Site Search
 description: 'Instantly search within any website using Google site: operator with one click'
+tags: ['seo']
 featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---
