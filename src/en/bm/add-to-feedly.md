@@ -29,6 +29,6 @@ This tool streamlines your content curation workflow by:
 -   Integrating directly with your Feedly account
     {: .list-inside .list-disc }
 
-## Why Use the Add to Feedly Bookmarklet?{:.my-4}
+## Why Use the Add to Feedly Bookmarklet? {:.text-3xl .font-bold}
 
 This essential tool makes RSS subscription effortless. Perfect for content curators, news followers, and anyone who uses Feedly to stay updated with their favorite websites. Simply click the bookmarklet on any page with an RSS feed to instantly add it to your Feedly subscriptions. Works seamlessly with all major websites that provide RSS/Atom feeds.

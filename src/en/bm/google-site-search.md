@@ -29,7 +29,7 @@ You can enhance your search by adding keywords after the site: operator to find 
 {% bookmarklet js %}
 {% bookmarkletbtn js, text=title %}
 
-## Why Use the Google Site Search Bookmarklet?
+## Why Use the Google Site Search Bookmarklet? {:.text-3xl .font-bold}
 
 This efficient tool transforms how you explore websites through Google's index. Perfect for SEO specialists, content researchers, and anyone needing to search within a specific domain. Simply click while on any website to instantly see all its indexed pages. Add your own search terms to narrow down results and find exactly what you're looking for.
 

@@ -25,7 +25,7 @@ Perfect for researchers, developers, and users who need to interact with web con
 {% bookmarklet js %}
 {% bookmarkletbtn js, text=title %}
 
-## Why Use the Enable Right Click Bookmarklet?
+## Why Use the Enable Right Click Bookmarklet? {:.text-3xl .font-bold}
 
 This essential tool restores your browser's natural functionality on restrictive websites. Ideal for web developers, researchers, and users who need full browser capabilities for legitimate purposes. Simply click the bookmarklet to restore right-click functionality instantly on any webpage that has disabled it.
 
