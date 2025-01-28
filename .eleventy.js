@@ -186,13 +186,21 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addTransform('htmlmin', function (content) {
 		// Prior to Eleventy 2.0: use this.outputPath instead
 		if (this.page.outputPath && this.page.outputPath.endsWith('.html')) {
-			let minified = htmlmin.minify(content, {
-				useShortDoctype: true,
-				removeComments: true,
-				collapseWhitespace: true,
-				// conservativeCollapse: true,
-			});
-			return minified;
+			try {
+				let minified = htmlmin.minify(content, {
+					useShortDoctype: true,
+					removeComments: true,
+					collapseWhitespace: true,
+					// conservativeCollapse: true,
+				});
+				return minified;
+			} catch (err) {
+				console.error('HTML minification error:', err.message);
+				// exit the process
+				process.exit(1);
+				// Return unminified content on error
+				return content;
+			}
 		}
 
 		return content;
@@ -377,24 +385,37 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addAsyncShortcode(
 		'bookmarklet',
 		async function (code, options = {}) {
-			const { encode = false } = options;
-			const minifiedCode = await minify(code);
-			let encodededCode = minifiedCode.code;
-			/* Encode value when needed */
-			if (encode) {
-				encodededCode = encodeURIComponent(encodededCode);
+			try {
+				const { encode = false } = options;
+				const minifiedCode = await minify(code);
+				let encodededCode = minifiedCode.code || ''; // Provide default empty string if undefined
+				/* Encode value when needed */
+				if (encode) {
+					encodededCode = encodeURIComponent(encodededCode);
+				}
+				// Escape < and > characters to prevent HTML rendering issues
+				encodededCode = encodededCode
+					.replace(/</g, '&lt;')
+					.replace(/>/g, '&gt;');
+				return `<pre class="language-js my-6"><code class="language-js">javascript:${encodededCode}</code></pre>`;
+			} catch (error) {
+				console.error('Error in bookmarklet shortcode:', error);
+				process.exit(1);
 			}
-			// return '```js function(){' + encodededCode + '}```';
-			return `<pre class="language-js my-6"><code class="language-js">javascript:${encodededCode}</code></pre>`;
 		}
 	);
 	eleventyConfig.addAsyncShortcode(
 		'bookmarkletbtn',
 		async function (code, { text = 'Bookmarklet' } = {}) {
-			const minifiedCode = await minify(code);
-			return `<div class="my-6">Drag me to bookmark bar: 👉🏻 <a class="border-gray-700 border-2 shadow-gray-700 shadow-custom hover:shadow-none transition px-3 py-1 text-gray-700 inline-block" role="button" href="javascript:${encodeURIComponent(
-				minifiedCode.code
-			)}" rel="nofollow noopener noreferrer" title="${text} Bookmarklet">${text}</a></div>`;
+			try {
+				const minifiedCode = await minify(code);
+				return `<div class="my-6">Drag me to bookmark bar: 👉🏻 <a class="border-gray-700 border-2 shadow-gray-700 shadow-custom hover:shadow-none transition px-3 py-1 text-gray-700 inline-block" role="button" href="javascript:${encodeURIComponent(
+					minifiedCode.code
+				)}" rel="nofollow noopener noreferrer" title="${text} Bookmarklet" onclick="event.preventDefault(); alert('Drag this button to your bookmark bar')">${text}</a></div>`;
+			} catch (error) {
+				console.error('Error in bookmarkletbtn shortcode:', error);
+				return '<div class="my-6">Error creating bookmarklet button</div>';
+			}
 		}
 	);
 
