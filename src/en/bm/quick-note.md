@@ -21,7 +21,7 @@ Perfect for jotting down ideas, saving important information, or drafting conten
 {% bookmarklet js %}
 {% bookmarkletbtn js, text=title %}
 
-## Why Use the Quick Note Bookmarklet?
+## Why Use the Quick Note Bookmarklet? {:.text-3xl .font-bold}
 
 This lightweight tool transforms your browser into an instant notepad. Ideal for students, researchers, writers, and anyone who needs to take quick notes while browsing. No account required, no apps to install - just click and start typing. Works seamlessly across all major browsers and doesn't store any data online, keeping your notes private.
 

@@ -18,7 +18,7 @@ Perfect for users who want faster page loads and cleaner content viewing. It's e
 {% bookmarklet js %}
 {% bookmarkletbtn js, text=title %}
 
-## Why Use the Remove Embed iframe Bookmarklet?
+## Why Use the Remove Embed iframe Bookmarklet? {:.text-3xl .font-bold}
 
 This efficient tool helps you take control of your browsing experience by removing embedded content that might impact page performance or distract from the main content. Ideal for readers, researchers, and anyone who wants a cleaner browsing experience. Also useful for web developers testing page layout without embedded content. Works instantly on any webpage across all major browsers.
 

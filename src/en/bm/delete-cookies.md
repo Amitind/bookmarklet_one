@@ -16,7 +16,7 @@ The Delete Cookies Bookmarklet is a handy privacy tool that helps you quickly re
 {% bookmarklet js %}
 {% bookmarkletbtn js, text=title %}
 
-## Features {:.mt-8}
+## Features {:.text-3xl .font-bold}
 
 -   ✨ One-click operation
 -   🔒 Works locally in your browser
