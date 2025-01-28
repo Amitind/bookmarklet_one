@@ -51,7 +51,7 @@ module.exports = function (eleventyConfig) {
 			/* when local set then load draft posts and normal posts */
 			// eleventyConfig.ignores.add('./src/en/posts-draft');
 			// eleventyConfig.ignores.add('./src/en/posts');
-			console.log('draft');
+			console.log('local');
 			break;
 		default:
 			/* in default conditon aways ignore posts-draft */
@@ -197,7 +197,7 @@ module.exports = function (eleventyConfig) {
 			} catch (err) {
 				console.error('HTML minification error:', err.message);
 				// exit the process
-				process.exit(1);
+				// process.exit(1);
 				// Return unminified content on error
 				return content;
 			}

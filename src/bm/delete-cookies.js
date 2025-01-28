@@ -1,48 +1,24 @@
-(function () {
-	// Get all cookies and split them into an array
-	const cookies = document.cookie.split('; ');
+javascript: (function () {
+	const cookies = document.cookie.split(';');
+	let count = 0;
 
-	// Function to delete a cookie
-	function deleteCookie(name, domain, path) {
-		document.cookie =
-			name +
-			'=; domain=' +
-			domain +
-			'; path=' +
-			path +
-			'; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+	for (let cookie of cookies) {
+		const eqPos = cookie.indexOf('=');
+		const name =
+			eqPos > -1 ? cookie.substr(0, eqPos).trim() : cookie.trim();
+
+		// Delete cookie with all common paths and domains
+		document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
+		document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=${window.location.hostname}`;
+		document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=.${window.location.hostname}`;
+
+		count++;
 	}
 
-	// Get the current host (domain)
-	let domain = location.host;
-
-	// Loop through all possible domain levels
-	while (domain) {
-		// Try with and without leading dot in domain
-		for (let sliceIndex = 0; sliceIndex < 2; ++sliceIndex) {
-			// Get the current path
-			let path = location.pathname;
-
-			// Loop through all possible path combinations
-			while (path) {
-				// Process each cookie
-				for (let i = 0; i < cookies.length; i++) {
-					const cookie = cookies[i];
-					if (cookie) {
-						const cookieName = cookie.split('=')[0];
-						// Delete cookie by setting expired date
-						deleteCookie(
-							cookieName,
-							sliceIndex === 0 ? domain : '.' + domain,
-							path
-						);
-					}
-				}
-				// Get next path level up
-				path = path.substring(0, path.lastIndexOf('/'));
-			}
-		}
-		// Get next domain level up
-		domain = domain.split('.').slice(1).join('.');
-	}
+	// More informative message
+	alert(
+		`${count} cookie${count !== 1 ? 's' : ''} ${
+			count !== 1 ? 'have' : 'has'
+		} been deleted from ${window.location.hostname}`
+	);
 })();

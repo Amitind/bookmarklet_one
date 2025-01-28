@@ -1,14 +1,22 @@
 ---
 title: Enable Right click
-description: ""
+description: 'Instantly enable right-click functionality on websites that have disabled it'
 # date: 2023-03-31
 featured_image: /img/open-graph.png
-custom_class: "prose"
+custom_class: 'prose'
 ---
 
-The {{title}} Bookmarklet is a handy Bookmarklet.
+The {{title}} Bookmarklet is a powerful utility that restores your browser's native right-click functionality.
 
-**With one click, Bookmarklet will enable right click on websites where website owners disable it.**
+**With one click, this bookmarklet bypasses website restrictions and re-enables right-click menu access, allowing you to use essential browser features like:**
+
+-   Copy and paste functionality
+-   Save images
+-   View page source
+-   Inspect elements (for developers)
+-   Access browser context menus
+
+Perfect for researchers, developers, and users who need to interact with web content naturally. This tool helps restore standard browser functionality while maintaining respect for content ownership.
 
 {% set js %}
 {% include "src/bm/enable_right_click.js" %}
@@ -16,3 +24,11 @@ The {{title}} Bookmarklet is a handy Bookmarklet.
 
 {% bookmarklet js %}
 {% bookmarkletbtn js, text=title %}
+
+## Why Use the Enable Right Click Bookmarklet?
+
+This essential tool restores your browser's natural functionality on restrictive websites. Ideal for web developers, researchers, and users who need full browser capabilities for legitimate purposes. Simply click the bookmarklet to restore right-click functionality instantly on any webpage that has disabled it.
+
+_Note: Please use responsibly and respect website content policies and copyright restrictions. This tool is intended for legitimate use cases only._
+
+Keywords: enable right click, restore context menu, web development tool, browser functionality, right-click unblock
