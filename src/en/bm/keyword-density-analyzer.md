@@ -26,7 +26,7 @@ This tool streamlines your content analysis by:
 -   Displaying word count and percentage
 -   Ignoring short words (3 letters or less)
 -   Providing instant keyword density insights
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 ## Why Use the Keyword Density Analyzer? {:.text-3xl .font-bold}
 

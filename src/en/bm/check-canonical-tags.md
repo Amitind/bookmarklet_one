@@ -26,7 +26,7 @@ This tool streamlines your SEO auditing by:
 -   Showing current page URL for comparison
 -   Highlighting presence/absence of canonical tags
 -   Working on any webpage instantly
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 ## Why Use the Canonical Tags Checker? {:.text-3xl .font-bold}
 

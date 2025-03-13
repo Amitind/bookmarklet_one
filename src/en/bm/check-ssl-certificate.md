@@ -26,7 +26,7 @@ This tool streamlines your security auditing by:
 -   Displaying current URL protocol
 -   Showing domain information
 -   Working on any webpage instantly
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 ## Why Use the SSL Certificate Checker? {:.text-3xl .font-bold}
 

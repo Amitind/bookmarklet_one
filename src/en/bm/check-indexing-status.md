@@ -26,7 +26,7 @@ This tool streamlines your indexing monitoring by:
 -   Showing exact indexing status
 -   Working on any webpage instantly
 -   Saving time from manual searches
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 ## Why Use the Check Indexing Status? {:.text-3xl .font-bold}
 

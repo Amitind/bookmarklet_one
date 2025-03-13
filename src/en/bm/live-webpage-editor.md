@@ -20,7 +20,7 @@ Editor features include:
 -   Style modifications
 -   Real-time preview
 -   Click-to-edit interface
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 {% set js %}
 {% include "src/bm/live-webpage-editor.js" %}

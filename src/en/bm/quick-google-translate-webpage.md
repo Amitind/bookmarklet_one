@@ -19,7 +19,7 @@ Translation features:
 -   Access to all Google Translate languages
 -   Works on any webpage
 -   Preserves links and functionality
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 {% set js %}
 {% include "src/bm/quick-google-translate-webpage.js" %}

@@ -26,7 +26,7 @@ This tool streamlines your image optimization by:
 -   Analyzing lazy loading implementation
 -   Displaying image details and previews
 -   Working on any webpage instantly
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 ## Why Use the Image Optimization Checker? {:.text-3xl .font-bold}
 

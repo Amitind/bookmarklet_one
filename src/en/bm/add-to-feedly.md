@@ -27,7 +27,7 @@ This tool streamlines your content curation workflow by:
 -   Saving you time from manual feed URL copying
 -   Making feed subscription seamless
 -   Integrating directly with your Feedly account
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 ## Why Use the Add to Feedly Bookmarklet? {:.text-3xl .font-bold}
 

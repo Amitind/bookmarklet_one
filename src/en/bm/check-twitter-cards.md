@@ -26,7 +26,7 @@ This tool streamlines your Twitter optimization by:
 -   Displaying tag content when present
 -   Highlighting missing tags
 -   Working on any webpage instantly
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 ## Why Use the Twitter Cards Checker? {:.text-3xl .font-bold}
 

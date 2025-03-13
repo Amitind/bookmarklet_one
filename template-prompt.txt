@@ -40,7 +40,7 @@ custom_class: 'prose'
 
 - Use these exact formatting rules:
 - Bullet points should have 4 spaces before them
-- Add {: .list-inside .list-disc } after bullet lists
+- Add {: .list-inside .list-disc .mb-6 } after bullet lists
 - Use {:.text-3xl .font-bold} for "Why Use" section
 - Keep paragraphs concise and engaging
 - Use proper spacing between sections

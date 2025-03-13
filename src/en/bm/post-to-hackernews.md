@@ -19,7 +19,7 @@ Sharing features:
 -   Quick access to HN submit form
 -   Works on any webpage
 -   Preserves original source
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 {% set js %}
 {% include "src/bm/post-to-hackernews.js" %}

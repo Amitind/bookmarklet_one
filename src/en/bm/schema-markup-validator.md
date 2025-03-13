@@ -26,7 +26,7 @@ This tool enhances your SEO workflow by:
 -   Displaying detailed results in a formatted popup
 -   Highlighting any validation errors in red
 -   Showing the exact location of each schema element
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 ## Why Use the Schema Markup Validator? {:.text-3xl .font-bold}
 

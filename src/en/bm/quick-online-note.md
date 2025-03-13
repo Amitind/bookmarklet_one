@@ -19,7 +19,7 @@ Key features of this notepad include:
 -   No account required
 -   Works instantly in any browser
 -   Private and secure - notes stay local
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 {% set js %}
 {% include "src/bm/quick-online-note.js" %}

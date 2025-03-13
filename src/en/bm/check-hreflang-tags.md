@@ -26,7 +26,7 @@ This tool streamlines your international SEO by:
 -   Showing current page URL for reference
 -   Highlighting presence/absence of hreflang tags
 -   Working on any webpage instantly
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 ## Why Use the Hreflang Tags Checker? {:.text-3xl .font-bold}
 

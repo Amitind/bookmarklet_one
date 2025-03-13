@@ -26,7 +26,7 @@ This tool streamlines your link analysis by:
 -   Displaying link text and URLs
 -   Showing link count summary
 -   Working on any webpage instantly
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 ## Why Use the Broken Links Checker? {:.text-3xl .font-bold}
 

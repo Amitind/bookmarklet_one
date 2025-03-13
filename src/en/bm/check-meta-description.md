@@ -26,7 +26,7 @@ This tool streamlines your SEO auditing by:
 -   Checking against optimal length (120-160 characters)
 -   Displaying full description content
 -   Working on any webpage instantly
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 ## Why Use the Meta Description Checker? {:.text-3xl .font-bold}
 

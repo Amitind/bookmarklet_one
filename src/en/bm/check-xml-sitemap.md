@@ -26,7 +26,7 @@ This tool streamlines your SEO auditing by:
 -   Displaying sitemap HTTP status codes
 -   Providing clickable sitemap URLs
 -   Working on any webpage instantly
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 ## Why Use the XML Sitemap Checker? {:.text-3xl .font-bold}
 

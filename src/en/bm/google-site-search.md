@@ -20,7 +20,7 @@ Search capabilities:
 -   Find hidden or archived content
 -   Search within any domain
 -   Add custom search terms
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 {% set js %}
 {% include "src/bm/google-site-search.js" %}
@@ -55,4 +55,4 @@ Features comparison:
 -   Keyword version: Prompts for search term first
 -   Both use Google's site: operator
 -   Both work on any website
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }

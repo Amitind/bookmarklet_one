@@ -26,7 +26,7 @@ This tool streamlines your performance analysis by:
 -   Including GTmetrix analysis
 -   Showing current page URL
 -   Working on any webpage instantly
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 ## Why Use the Page Speed Checker? {:.text-3xl .font-bold}
 

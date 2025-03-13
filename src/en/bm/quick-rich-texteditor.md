@@ -20,7 +20,7 @@ Key features include:
 -   Heading styles
 -   Color and font options
 -   Copy formatted text to clipboard
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 {% set js %}
 {% include "src/bm/quick-rich-texteditor.js" %}

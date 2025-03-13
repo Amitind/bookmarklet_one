@@ -19,7 +19,7 @@ Features of the snow effect:
 -   Smooth animation
 -   Works on any webpage
 -   Easy to toggle on/off
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 {% set js %}
 {% include "src/bm/let-it-snow.js" %}

@@ -26,7 +26,7 @@ This tool streamlines your social media optimization by:
 -   Displaying tag content when present
 -   Highlighting missing tags
 -   Working on any webpage instantly
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 ## Why Use the Open Graph Tags Checker? {:.text-3xl .font-bold}
 

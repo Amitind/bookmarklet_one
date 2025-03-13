@@ -26,7 +26,7 @@ This tool enhances your SEO workflow by:
 -   Preserving original text formatting and layout
 -   Working seamlessly on any webpage
 -   Making keyword analysis quick and efficient
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 ## Why Use the SEO Keyword Highlighter? {:.text-3xl .font-bold}
 

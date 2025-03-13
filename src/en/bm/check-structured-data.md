@@ -26,7 +26,7 @@ This tool streamlines your SEO auditing by:
 -   Displaying count of each structured data type
 -   Highlighting presence/absence of structured data
 -   Working on any webpage instantly
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 ## Why Use the Structured Data Checker? {:.text-3xl .font-bold}
 

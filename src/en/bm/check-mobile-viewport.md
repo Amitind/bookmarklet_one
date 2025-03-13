@@ -26,7 +26,7 @@ This tool streamlines your mobile optimization by:
 -   Displaying current viewport settings
 -   Showing recommended configuration
 -   Working on any webpage instantly
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 ## Why Use the Mobile Viewport Checker? {:.text-3xl .font-bold}
 

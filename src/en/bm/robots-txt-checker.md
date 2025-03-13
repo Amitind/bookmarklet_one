@@ -26,7 +26,7 @@ This tool streamlines your SEO auditing by:
 -   Displaying full robots.txt content
 -   Highlighting crawl control status
 -   Working on any webpage instantly
-    {: .list-inside .list-disc }
+    {: .list-inside .list-disc .mb-6 }
 
 ## Why Use the Robots.txt Checker? {:.text-3xl .font-bold}
 
