@@ -1,0 +1,53 @@
+Create a new bookmarklet with the following details:
+
+Name: [Bookmarklet Name]
+Description: [One-line description of what the bookmarklet does]
+
+The bookmarklet should:
+[Detailed description of functionality]
+
+Please create two files:
+
+1. JavaScript file (src/bm/[name].js):
+- Optimized, minified code
+- Error handling
+- Clear variable names
+- Efficient DOM manipulation if needed
+
+2. Documentation file (src/en/bm/[name].md):
+- Follow this exact metadata format:
+---
+title: [Bookmarklet Name]
+description: "[One-line description]"
+featured_image: /img/open-graph.png
+custom_class: 'prose'
+---
+
+- Follow this content structure:
+1. Introduction paragraph using {{title}}
+2. Bold statement about main functionality
+3. Brief value proposition
+4. Bookmarklet inclusion code:
+{% set js %}
+{% include "src/bm/[name].js" %}
+{% endset %}
+
+{% bookmarklet js %}
+{% bookmarkletbtn js, text=title %}
+
+5. Bullet points with features (5 points)
+6. "Why Use" section with proper styling
+
+- Use these exact formatting rules:
+- Bullet points should have 4 spaces before them
+- Add {: .list-inside .list-disc } after bullet lists
+- Use {:.text-3xl .font-bold} for "Why Use" section
+- Keep paragraphs concise and engaging
+- Use proper spacing between sections
+
+The bookmarklet should be:
+- Simple to use
+- Efficient in execution
+- Work on any webpage
+- Have clear error handling
+- Follow best practices
