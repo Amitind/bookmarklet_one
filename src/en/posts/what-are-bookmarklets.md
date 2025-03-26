@@ -1,6 +1,6 @@
 ---
 title: What are Bookmarklets
-description: ""
+description: "Learn about bookmarklets - small JavaScript code snippets stored as browser bookmarks that help automate tasks and access hidden page information without installing extensions"
 date: 2023-01-24
 tags:
   - How To

@@ -22,7 +22,7 @@ The **Clear Local Storage** bookmarklet is a powerful tool for web developers to
 - Simple to use with a single click
 {: .list-inside .list-disc .mb-6}
 
-### Why Use Clear Local Storage? {:.text-3xl .font-bold .mt-10}
+### Why Use Clear Local Storage? {: .text-3xl .font-bold .mt-10}
 
 The Clear Local Storage bookmarklet is essential for developers who need to:
 - Reset application state during testing
@@ -31,7 +31,7 @@ The Clear Local Storage bookmarklet is essential for developers who need to:
 - Test application behavior with fresh storage
 - Remove outdated or corrupted storage data
 
-### Features {:.text-3xl .font-bold .mt-10}
+### Features {: .text-3xl .font-bold .mt-10}
 
 1. **Domain-Specific Clearing**
    - Only affects the current domain
@@ -53,7 +53,7 @@ The Clear Local Storage bookmarklet is essential for developers who need to:
    - Clear instructions
    - Intuitive controls
 
-### How to Use {:.text-3xl .font-bold .mt-10}
+### How to Use {: .text-3xl .font-bold .mt-10}
 
 1. Click the bookmarklet to activate the tool
 2. Review the domain and number of items to be cleared
@@ -62,7 +62,7 @@ The Clear Local Storage bookmarklet is essential for developers who need to:
 5. View the success/error message
 6. Close the popup when done
 
-### Best Practices {:.text-3xl .font-bold .mt-10}
+### Best Practices {: .text-3xl .font-bold .mt-10}
 
 - Use this tool only when necessary
 - Back up important data before clearing

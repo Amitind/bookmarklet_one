@@ -22,7 +22,7 @@ The **Color Picker** bookmarklet is a powerful tool for web developers and desig
 - Simple to use with a single click
 {: .list-inside .list-disc .mb-6}
 
-### Why Use Color Picker? {:.text-3xl .font-bold .mt-10}
+### Why Use Color Picker? {: .text-3xl .font-bold .mt-10}
 
 The Color Picker bookmarklet is essential for developers and designers who need to:
 - Identify exact colors used on a webpage
@@ -31,7 +31,7 @@ The Color Picker bookmarklet is essential for developers and designers who need 
 - Extract color values for development
 - Understand color relationships
 
-### Features {:.text-3xl .font-bold .mt-10}
+### Features {: .text-3xl .font-bold .mt-10}
 
 1. **Multiple Color Formats**
    - HEX color codes
@@ -57,7 +57,7 @@ The Color Picker bookmarklet is essential for developers and designers who need 
    - Multiple format options
    - Precise color values
 
-### How to Use {:.text-3xl .font-bold .mt-10}
+### How to Use {: .text-3xl .font-bold .mt-10}
 
 1. Click the bookmarklet to activate the tool
 2. Click the "Start Picking Colors" button
@@ -65,7 +65,7 @@ The Color Picker bookmarklet is essential for developers and designers who need 
 4. View the color information in the popup
 5. Close the tool when done
 
-### Best Practices {:.text-3xl .font-bold .mt-10}
+### Best Practices {: .text-3xl .font-bold .mt-10}
 
 - Use this tool to maintain color consistency
 - Check color contrast for accessibility

@@ -22,7 +22,7 @@ The **Cookie Inspector** bookmarklet is a powerful tool for web developers to in
 - Simple to use with a single click
 {: .list-inside .list-disc .mb-6}
 
-### Why Use Cookie Inspector? {:.text-3xl .font-bold .mt-10}
+### Why Use Cookie Inspector? {: .text-3xl .font-bold .mt-10}
 
 The Cookie Inspector bookmarklet is essential for developers who need to:
 - Debug cookie-related issues
@@ -31,7 +31,7 @@ The Cookie Inspector bookmarklet is essential for developers who need to:
 - Understand cookie usage patterns
 - Ensure proper cookie implementation
 
-### Features {:.text-3xl .font-bold .mt-10}
+### Features {: .text-3xl .font-bold .mt-10}
 
 1. **Comprehensive Cookie Information**
    - Cookie name and value
@@ -57,7 +57,7 @@ The Cookie Inspector bookmarklet is essential for developers who need to:
    - Domain information
    - Path information
 
-### How to Use {:.text-3xl .font-bold .mt-10}
+### How to Use {: .text-3xl .font-bold .mt-10}
 
 1. Click the bookmarklet to activate the tool
 2. View the list of all cookies for the current domain
@@ -68,7 +68,7 @@ The Cookie Inspector bookmarklet is essential for developers who need to:
    - Expiration date
 5. Close the popup when done
 
-### Best Practices {:.text-3xl .font-bold .mt-10}
+### Best Practices {: .text-3xl .font-bold .mt-10}
 
 - Use this tool to verify cookie settings
 - Check cookie expiration dates

@@ -1,0 +1,1 @@
+javascript:(function(){try{const domain=window.location.hostname;window.open(`https://moz.com/domain-analysis?site=${domain}`,'_blank');}catch(e){alert('Error: '+e.message);}})(); 

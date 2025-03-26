@@ -22,7 +22,7 @@ The **Element Counter** bookmarklet is a powerful tool for web developers to qui
 - Simple to use with a single click
 {: .list-inside .list-disc .mb-6}
 
-### Why Use Element Counter? {:.text-3xl .font-bold .mt-10}
+### Why Use Element Counter? {: .text-3xl .font-bold .mt-10}
 
 The Element Counter bookmarklet is essential for developers who need to:
 - Analyze page structure
@@ -31,7 +31,7 @@ The Element Counter bookmarklet is essential for developers who need to:
 - Debug layout issues
 - Understand element usage
 
-### Features {:.text-3xl .font-bold .mt-10}
+### Features {: .text-3xl .font-bold .mt-10}
 
 1. **Comprehensive Element Analysis**
    - Total element count
@@ -57,7 +57,7 @@ The Element Counter bookmarklet is essential for developers who need to:
    - Quick overview
    - Organized presentation
 
-### How to Use {:.text-3xl .font-bold .mt-10}
+### How to Use {: .text-3xl .font-bold .mt-10}
 
 1. Click the bookmarklet to activate the tool
 2. View the total element count
@@ -65,7 +65,7 @@ The Element Counter bookmarklet is essential for developers who need to:
 4. Use the search box to filter elements
 5. Close the popup when done
 
-### Best Practices {:.text-3xl .font-bold .mt-10}
+### Best Practices {: .text-3xl .font-bold .mt-10}
 
 - Use this tool to optimize markup
 - Check for redundant elements

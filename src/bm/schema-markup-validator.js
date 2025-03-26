@@ -63,7 +63,7 @@ javascript:(function(){
     content.innerHTML = `
         <h2 style="margin-top: 0;">Schema Markup Analysis</h2>
         <div style="margin-bottom: 20px;">
-            <button onclick="this.parentElement.parentElement.remove()" style="float: right;">Close</button>
+            <button onclick="this.closest('.seo-popup').remove()" style="float: right;">Close</button>
         </div>
         ${results.length === 0 ? '<p>No schema markup found on this page.</p>' : ''}
         ${results.map(result => `
@@ -78,6 +78,7 @@ javascript:(function(){
         `).join('')}
     `;
     
+    popup.classList.add('seo-popup');
     popup.appendChild(content);
     document.body.appendChild(popup);
 })(); 

@@ -22,7 +22,7 @@ The **Font Inspector** bookmarklet is a powerful tool for web developers and des
 - Simple to use with a single click
 {: .list-inside .list-disc .mb-6}
 
-### Why Use Font Inspector? {:.text-3xl .font-bold .mt-10}
+### Why Use Font Inspector? {: .text-3xl .font-bold .mt-10}
 
 The Font Inspector bookmarklet is essential for developers and designers who need to:
 - Identify exact font properties
@@ -31,7 +31,7 @@ The Font Inspector bookmarklet is essential for developers and designers who nee
 - Extract font values for development
 - Understand text styling
 
-### Features {:.text-3xl .font-bold .mt-10}
+### Features {: .text-3xl .font-bold .mt-10}
 
 1. **Comprehensive Font Information**
    - Font family
@@ -60,7 +60,7 @@ The Font Inspector bookmarklet is essential for developers and designers who nee
    - Organized information
    - Clear presentation
 
-### How to Use {:.text-3xl .font-bold .mt-10}
+### How to Use {: .text-3xl .font-bold .mt-10}
 
 1. Click the bookmarklet to activate the tool
 2. Click the "Start Inspecting Fonts" button
@@ -68,7 +68,7 @@ The Font Inspector bookmarklet is essential for developers and designers who nee
 4. View the font information in the popup
 5. Close the tool when done
 
-### Best Practices {:.text-3xl .font-bold .mt-10}
+### Best Practices {: .text-3xl .font-bold .mt-10}
 
 - Use this tool to maintain typography consistency
 - Check font hierarchy

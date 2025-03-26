@@ -1,0 +1,1 @@
+javascript:(function(){try{const domain=window.location.hostname.replace(/^www\./,'');window.open(`https://trends.google.com/trends/explore?q=${encodeURIComponent(domain)}`,'_blank');}catch(e){alert('Error: '+e.message);}})(); 

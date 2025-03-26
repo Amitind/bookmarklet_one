@@ -1,6 +1,6 @@
 ---
 title: How to Create Bookmarklets
-description: ""
+description: "A comprehensive guide to creating bookmarklets - learn how to write JavaScript code that can be saved as browser bookmarks to automate tasks and enhance web browsing"
 date: 2023-01-25
 tags:
   - How To

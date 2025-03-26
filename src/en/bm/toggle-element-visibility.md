@@ -22,7 +22,7 @@ The **Toggle Element Visibility** bookmarklet is a powerful tool for web develop
 - Simple to use with a single click
 {: .list-inside .list-disc .mb-6}
 
-### Why Use Toggle Element Visibility? {:.text-3xl .font-bold .mt-10}
+### Why Use Toggle Element Visibility? {: .text-3xl .font-bold .mt-10}
 
 The Toggle Element Visibility bookmarklet is essential for developers who need to:
 - Test how layouts behave when elements are hidden
@@ -31,7 +31,7 @@ The Toggle Element Visibility bookmarklet is essential for developers who need t
 - Quickly experiment with different element states
 - Document which elements are hidden and their original display properties
 
-### Features {:.text-3xl .font-bold .mt-10}
+### Features {: .text-3xl .font-bold .mt-10}
 
 1. **Interactive Element Selection**
    - Click any element to toggle its visibility
@@ -53,7 +53,7 @@ The Toggle Element Visibility bookmarklet is essential for developers who need t
    - Clear instructions
    - Easy to close and remove
 
-### How to Use {:.text-3xl .font-bold .mt-10}
+### How to Use {: .text-3xl .font-bold .mt-10}
 
 1. Click the bookmarklet to activate the tool
 2. Click the "Start Toggling" button in the control panel
@@ -63,7 +63,7 @@ The Toggle Element Visibility bookmarklet is essential for developers who need t
 6. Use the "Restore All Elements" button to show all hidden elements
 7. Click the × button to close the tool
 
-### Best Practices {:.text-3xl .font-bold .mt-10}
+### Best Practices {: .text-3xl .font-bold .mt-10}
 
 - Use this tool to test responsive designs
 - Document which elements are hidden for debugging
