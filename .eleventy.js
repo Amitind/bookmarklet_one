@@ -77,6 +77,7 @@ module.exports = function (eleventyConfig) {
 		'src/public/icons': '/icons',
 		'src/public/img': '/img',
 		'src/public/js/*.min.js': '/js',
+		'src/public/*.txt': '/',
 	});
 
 	/* Plugins */
