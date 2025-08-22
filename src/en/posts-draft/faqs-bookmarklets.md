@@ -1,8 +1,8 @@
 ---
 title: What are Bookmarklets
 description: "Frequently asked questions about bookmarklets - learn everything you need to know about these powerful browser automation tools and how to use them effectively"
-tags:
-  - How To
+# tags:
+#   - How To
 layout: layouts/post.njk
 featured_image: /img/open-graph.png
 ---

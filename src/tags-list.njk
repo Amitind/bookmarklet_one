@@ -13,7 +13,7 @@ layout: layouts/base.njk
 	</div>
 
 
-  <div class="flex justify-center py-16 space-x-4">
+  <div class="flex flex-wrap max-w-6xl mx-auto gap-4 justify-center py-16">
       {% for tag in collections.tagList %}
       {% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
           <a

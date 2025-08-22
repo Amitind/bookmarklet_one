@@ -80,6 +80,32 @@
 			"class": "bg-purple-700 text-white",
 			"icon": "",
 			"description": ""
+		},
+		"web dev": {
+			"class": "bg-amber-700 text-white",
+			"icon": "",
+			"description": ""
+		},
+		"performance": {
+			"class": "bg-pink-700 text-white",
+			"icon": "",
+			"description": ""
+		},
+		"debugging": {
+			"class": "bg-red-700 text-white",
+			"icon": "",
+			"description": ""
+		},
+		"css": {
+			"class": "bg-blue-700 text-white",
+			"icon": "",
+			"description": ""
+		},
+		"design": {
+			"class": "bg-emerald-700 text-white",
+			"icon": "",
+			"description": ""
 		}
+		
 	}
 }

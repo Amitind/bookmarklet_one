@@ -1,6 +1,7 @@
 ---
 title: "Best Bookmarklets"
 subtitle: "You don't need Extension for that."
+showSubtitle: true
 description: "Discover a collection of powerful bookmarklets for SEO, web development, and productivity. No extensions needed - just drag and drop to your browser. Includes tools for meta tag analysis, schema validation, link checking, and more."
 layout: layouts/home.njk
 permalink: "/"
@@ -13,22 +14,26 @@ permalink: "/"
 	{% include "partials/hero.njk" %}
 
 	<article
-class="max-w-7xl mx-auto "
+class="max-w-6xl mx-auto "
 >
-		<div class="main-container pt-6 p-5">
+		<div class="main-container">
 			{# //TODO: update content here #}
 		</div>
 
 	</article>
 	<!-- Main End -->
-	<div class="max-w-7xl container my-10 md:mx-auto px-5">
+	<div class="max-w-6xl container my-10 md:mx-auto px-5 flex items-center justify-between">
 		<h2 class="text-2xl sm:text-3xl md:text-left text-center font-bold">Latest Blog Posts</h2>
+		<a href="/blog/" class="text-blue-500">View All</a>
+
 	</div>
 	{% set postslist = collections.posts | head(-3) %}
 	{% include "components/postslist.njk" %}
 
-	<div class="max-w-7xl container my-10 md:mx-auto px-5">
+	<div class="max-w-6xl container my-10 md:mx-auto px-5 flex items-center justify-between">
 		<h2 class="text-2xl sm:text-3xl md:text-left text-center font-bold">All Bookmarklets</h2>
+		{# link to bookmarklet page #}
+		<a href="/bm/" class="text-blue-500">View All</a>
 	</div>
 	{% set postslist = collections.bookmarklets | head(-3) %}
 	{% include "components/postslist.njk" %}

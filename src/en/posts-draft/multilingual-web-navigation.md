@@ -2,7 +2,7 @@
 title: 'Multilingual Web Navigation: Essential Tools and Techniques'
 description: 'Master web browsing across language barriers with powerful translation and navigation tools'
 date: 2024-03-21
-tags: ['how to', 'tool']
+# tags: ['how to', 'tool']
 draft: true
 ---
 

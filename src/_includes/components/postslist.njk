@@ -2,12 +2,11 @@
 	{% set postslist = collections.posts | head(-3) %}
 	{% include "components/postslist.njk" %}
  #}
-<section class="max-w-7xl postlist container my-10 mx-auto px-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<section class="max-w-6xl postlist container my-10 mx-auto px-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
   {% for post in postslist | reverse %}
-    <a href="{{ post.url | url }}" class="max-w-xl overflow-hidden bg-white rounded-lg shadow-xl shadow-gray-100 text-ellipsis" >
-      <div class="relative">
-
+  <div class="relative overflow-hidden rounded-lg shadow-xl shadow-gray-100 text-ellipsis  border-2 border-gray-100">
+        <a href="{{ post.url | url }}" class="inset-0 absolute" ></a>
         {% if post.data.featured_image %}
           {% image post.data.featured_image, imgclass="object-cover w-full" %}
         {% else %}
@@ -18,10 +17,11 @@
           <div class="text-ellipsis overflow-hidden">
 
             {# add tags list #}
-            <div class="space-x-2  mb-6">
+            <div class="mb-6 z-10 gap-2 flex flex-wrap">
               {% for tag in post.data.tags | filterTagList %}
                 {% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-                <span class="py-1 px-3 rounded-full uppercase text-xs shadow-xl shadow-blue-100 {% tagsmeta tag %}">{{ tag }}</span>
+                <a href="{{ tagUrl | url }}" class="py-1 px-3 rounded-full uppercase text-xs shadow-xl shadow-blue-100 isolate {% tagsmeta tag %}">{{ tag }}</a>
+                {# <span class="py-1 px-3 rounded-full uppercase text-xs shadow-xl shadow-blue-100 {% tagsmeta tag %}">{{ tag }}</span> #}
               {% endfor %}
             </div>
 
@@ -39,6 +39,5 @@
         </div>
 
       </div>
-    </a>
   {% endfor %}
 </section>

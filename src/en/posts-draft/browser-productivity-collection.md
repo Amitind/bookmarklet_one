@@ -2,7 +2,7 @@
 title: 'Essential Browser Productivity Bookmarklets Collection'
 description: 'A comprehensive guide to productivity-enhancing bookmarklets for your daily browsing needs'
 # date: 2024-03-21
-tags: ['how to', 'tool']
+# tags: ['how to', 'tool']
 draft: true
 ---
 

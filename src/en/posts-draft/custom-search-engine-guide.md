@@ -2,7 +2,7 @@
 title: 'How to Create a Custom Search Engine for Any Website'
 description: 'Learn how to create and use powerful custom search engines for any website using bookmarklets and advanced techniques'
 date: 2024-03-21
-tags: ['how to', 'tool']
+# tags: ['how to', 'tool']
 draft: true
 ---
 

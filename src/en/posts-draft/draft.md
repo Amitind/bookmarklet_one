@@ -1,8 +1,8 @@
 ---
 title: draft content
 description: ""
-tags:
-  - How To
+# tags:
+#   - How To
 featured_image: /img/open-graph.png
 ---
 
