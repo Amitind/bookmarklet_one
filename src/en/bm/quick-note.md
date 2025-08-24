@@ -1,6 +1,7 @@
 ---
 title: Quick Note
 description: 'Instantly create notes in your browser with this simple Quick Note bookmarklet'
+tags: ["featured"]
 # date: 2023-03-31
 featured_image: /img/open-graph.png
 custom_class: 'prose'

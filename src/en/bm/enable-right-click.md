@@ -1,6 +1,7 @@
 ---
 title: Enable Right click
 description: 'Instantly enable right-click functionality on websites that have disabled it'
+tags: ["featured"]
 # date: 2023-03-31
 featured_image: /img/open-graph.png
 custom_class: 'prose'
@@ -10,11 +11,12 @@ The {{title}} Bookmarklet is a powerful utility that restores your browser's nat
 
 **With one click, this bookmarklet bypasses website restrictions and re-enables right-click menu access, allowing you to use essential browser features like:**
 
--   Copy and paste functionality
--   Save images
--   View page source
--   Inspect elements (for developers)
--   Access browser context menus
+- Copy and paste functionality
+- Save images
+- View page source
+- Inspect elements (for developers)
+- Access browser context menus
+{: .list-inside .list-disc .mb-6}
 
 Perfect for researchers, developers, and users who need to interact with web content naturally. This tool helps restore standard browser functionality while maintaining respect for content ownership.
 

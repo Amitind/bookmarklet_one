@@ -1,6 +1,7 @@
 ---
 title: Let it Snow
 description: 'Add magical falling snowflakes effect to any webpage with a single click'
+tags: ["featured"]
 featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---

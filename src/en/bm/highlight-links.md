@@ -1,6 +1,7 @@
 ---
 title: Highlight Links
 description: "Instantly identify Follow, NoFollow, and Sponsored links on any webpage with color-coded highlights"
+tags: ["featured"]
 featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---

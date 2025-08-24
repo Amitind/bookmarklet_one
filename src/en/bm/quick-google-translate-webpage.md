@@ -1,6 +1,7 @@
 ---
 title: Quick Google Translate Webpage
 description: 'Instantly translate any webpage to your preferred language using Google Translate'
+tags: ["featured"]
 featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---

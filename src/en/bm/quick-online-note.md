@@ -1,6 +1,7 @@
 ---
 title: Quick Online Note
 description: 'Create instant online notes in a clean, distraction-free environment with one click'
+tags: ["featured"]
 featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---

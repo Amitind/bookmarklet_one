@@ -36,6 +36,11 @@
 		"url": "author/url"
 	},
 	"tags": {
+		"featured":{
+			"class": "bg-blue-700 text-white",
+			"icon": "",
+			"description": ""
+		},
 		"how to": {
 			"class": "bg-blue-700 text-white",
 			"icon": "idea.svg",

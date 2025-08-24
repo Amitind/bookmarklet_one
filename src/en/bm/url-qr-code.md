@@ -1,6 +1,7 @@
 ---
 title: URL to QR Code
 description: "Instantly generate a QR code for the current webpage URL, making it easy to share links across devices and platforms"
+tags: ["featured"]
 date: 2024-05-29
 featured_image: /img/open-graph.png
 custom_class: "prose"

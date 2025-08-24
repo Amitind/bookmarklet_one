@@ -1,6 +1,7 @@
 ---
 title: Live webpage Editor
 description: 'Edit any webpage content instantly in your browser with this live WYSIWYG editor'
+tags: ["featured"]
 featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---

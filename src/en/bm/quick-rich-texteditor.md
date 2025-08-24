@@ -5,6 +5,10 @@ featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---
 
+:::danger
+Currently Broken
+:::
+
 The {{title}} Bookmarklet is a powerful browser-based rich text editing tool.
 
 **With one click, this bookmarklet opens a full-featured WYSIWYG editor in a new tab, complete with formatting options and text styling tools.**

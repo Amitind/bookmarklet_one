@@ -1,6 +1,7 @@
 ---
 title: Wayback Machine Search
 description: "Instantly search the current webpage in Internet Archive's Wayback Machine to view historical versions and track website changes over time"
+tags: ["featured"]
 # date: 2023-03-31
 featured_image: /img/open-graph.png
 custom_class: 'prose'

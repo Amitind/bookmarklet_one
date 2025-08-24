@@ -1,7 +1,7 @@
 ---
 title: Font Inspector
 description: "Shows a popup with the font family, size, and weight of text under the cursor."
-tags: ['Web Dev', 'Design']
+tags: ['Web Dev', 'Design','featured']
 featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---

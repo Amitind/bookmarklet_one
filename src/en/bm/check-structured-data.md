@@ -1,7 +1,7 @@
 ---
 title: Check Structured Data
 description: "A bookmarklet that checks for structured data implementation on the current page"
-tags: ['seo']
+tags: ['seo','featured']
 featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---
