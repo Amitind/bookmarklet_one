@@ -57,7 +57,7 @@ class="max-w-6xl mx-auto "
 		<h2 class="text-xl md:text-left text-center ">Browse Bookmarklets</h2>
 		<a href="/bm/" class="text-xs px-2 hover:bg-bg-500 py-2 hover:text-white transition-colors duration-300">View All</a>
 	</div>
-	{% set postslist = collections.bookmarklets %}
+	{% set postslist = collections.featured %}
 	{% include "components/bookmarkletlist.njk" %}
 
 	{# end of content block #}
