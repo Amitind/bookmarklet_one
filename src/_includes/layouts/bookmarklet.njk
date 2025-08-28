@@ -5,7 +5,7 @@ templateClass: bookmarklet
 
 {% include "partials/hero.njk" %}
 
-<article class="max-w-4xl mx-auto p-6 {{ custom_class }}">
+<article class="max-w-4xl mx-auto p-6 bg-white {{ custom_class }}">
 	{{ content | safe }}
 
 	{% set footnavlist = collections.bookmarklets %}

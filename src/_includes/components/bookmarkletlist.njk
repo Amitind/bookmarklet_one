@@ -4,45 +4,139 @@
  #}
 <section class="max-w-6xl container my-10 mx-auto px-5" data-component="filterable-table">
 
-  <div class="flex items-center gap-3">
+  <div class="flex justify-center gap-2">
     <label for="" class="sr-only">Search</label>
     <input type="text" data-role="filter-input" placeholder="Search bookmarklets by title, tags, or excerpt" class="w-full md:w-1/2 rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200" />
+    <button type="button" data-role="clear-filter" aria-label="Clear search" class="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-200" style="visibility:hidden">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4" aria-hidden="true">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16m3.53-10.47a.75.75 0 0 0-1.06-1.06L10 8.94 7.53 6.47a.75.75 0 1 0-1.06 1.06L8.94 10l-2.47 2.47a.75.75 0 1 0 1.06 1.06L10 11.06l2.47 2.47a.75.75 0 1 0 1.06-1.06L11.06 10z" clip-rule="evenodd" />
+      </svg>
+    </button>
   </div>
 
-  <div class="mt-6 overflow-x-auto border border-gray-200 rounded-lg">
-    <table class="min-w-full table-auto">
-      <thead class="bg-gray-50">
-        <tr>
-          <th scope="col" class="text-left text-xs font-semibold tracking-wider text-gray-600 uppercase px-4 py-3">Title</th>
-          <th scope="col" class="text-left text-xs font-semibold tracking-wider text-gray-600 uppercase px-4 py-3">Tags</th>
-          <th scope="col" class="text-left text-xs font-semibold tracking-wider text-gray-600 uppercase px-4 py-3">Excerpt</th>
-        </tr>
-      </thead>
-      <tbody class="divide-y divide-gray-100">
-        {% for post in postslist | reverse %}
-        <tr class="hover:bg-gray-50">
-          <td class="align-top px-4 py-3">
-            <a href="{{ post.url | url }}" class="text-blue-700 hover:underline font-medium">
-              {% if post.data.title %}
-                {{ post.data.title }}
-              {% else %}
-                <code>{{ post.url }}</code>
-              {% endif %}
-            </a>
-          </td>
-          <td class="align-top px-4 py-3">
-            <div class="flex flex-wrap gap-2">
-              {% for tag in post.data.tags | filterTagList %}
-                {% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-                <a data-tag="{{ tag }}" href="{{ tagUrl | url }}" class="py-1 px-3 rounded-full uppercase text-xs shadow-xl shadow-blue-100 isolate data-[tag=bookmarklets]:hidden {% tagsmeta tag %}">{{ tag }}</a>
-              {% endfor %}
-            </div>
-          </td>
-          <td class="align-top px-4 py-3 text-gray-600">{{ post.templateContent | excerpt(100) }}</td>
-        </tr>
+  <div class="mt-6 overflow-x-auto">
+    {# Render a table for each tag present in postslist, excluding the `bookmarklets` tag #}
+    {% set groupsRendered = 0 %}
+    {% for tag in collections.tagList %}
+      {% if tag != 'bookmarklets' %}
+        {# Check if any post in postslist has this tag #}
+        {% set hasAny = false %}
+        {% for p in postslist %}
+          {% if p.data.tags and (tag in p.data.tags) %}
+            {% set hasAny = true %}
+          {% endif %}
         {% endfor %}
-      </tbody>
-    </table>
+
+        {% if hasAny %}
+          {% set groupsRendered = groupsRendered + 1 %}
+          <div class="mb-10" data-role="tag-section" data-tag="{{ tag }}">
+            <h3 class="px-4 py-2 text-sm font-semibold tracking-wider text-gray-700 uppercase {% tagsmeta tag %}">{{ tag }}</h3>
+            <div class="overflow-x-auto border border-gray-200 ">
+              <table class="min-w-full table-auto">
+                <thead class="bg-gray-100">
+                  <tr>
+                    <th scope="col" class="text-left text-xs font-semibold tracking-wider text-gray-600 uppercase px-4 py-3">Bookmarklet name</th>
+                    <th scope="col" class="text-left text-xs font-semibold tracking-wider text-gray-600 uppercase px-4 py-3">Description</th>
+                    {# <th scope="col" class="text-left text-xs font-semibold tracking-wider text-gray-600 uppercase px-4 py-3">Tags</th> #}
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100">
+                  {% for post in postslist | reverse %}
+                    {% if post.data.tags and (tag in post.data.tags) %}
+                    <tr class="hover:bg-primary-50 transition-colors ">
+                      <td class="align-top px-4 py-3">
+                        <a href="{{ post.url | url }}" class="hover:text-blue-700 hover:underline font-medium">
+                          {% if post.data.title %}
+                            {{ post.data.title }}
+                          {% else %}
+                            <code>{{ post.url }}</code>
+                          {% endif %}
+                        </a>
+                      </td>
+                      <td class="align-top px-4 py-3 text-sm text-gray-600">{{ post.templateContent | excerpt(100) }}</td>
+                      {# <td class="align-top px-4 py-3">
+                        <div class="flex flex-wrap gap-2">
+                          {% for t in post.data.tags | filterTagList %}
+                            {% set tagUrl %}/tags/{{ t | slugify }}/{% endset %}
+                            <a data-tag="{{ t }}" href="{{ tagUrl | url }}" class="text-xs lowercase py-.5 px-2 rounded-full  data-[tag=bookmarklets]:hidden {% tagsmeta t %}">{{ t }}</a>
+                          {% endfor %}
+                        </div>
+                      </td> #}
+                    </tr>
+                    {% endif %}
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {# If no tag tables were rendered or there are untagged posts, render an Untagged table #}
+    {% set untaggedCount = 0 %}
+    {% for p in postslist %}
+      {% set cleanTags = (p.data.tags | default([])) | filterTagList %}
+      {% set hasNonBookmarkletTags = false %}
+      {% for t in cleanTags %}
+        {% if t != 'bookmarklets' %}
+          {% set hasNonBookmarkletTags = true %}
+        {% endif %}
+      {% endfor %}
+      {% if not hasNonBookmarkletTags %}
+        {% set untaggedCount = untaggedCount + 1 %}
+      {% endif %}
+    {% endfor %}
+
+    {% if groupsRendered == 0 or untaggedCount > 0 %}
+      <div class="mb-10" data-role="tag-section" data-tag="__untagged">
+        <h3 class="px-4 py-2 text-sm font-semibold tracking-wider bg-red-500 text-white uppercase">Untagged</h3>
+        <div class="overflow-x-auto border border-gray-200 ">
+          <table class="min-w-full table-auto">
+            <thead class="bg-gray-50">
+              <tr>
+                <th scope="col" class="text-left text-xs font-semibold tracking-wider text-gray-600 uppercase px-4 py-3">Title</th>
+                <th scope="col" class="text-left text-xs font-semibold tracking-wider text-gray-600 uppercase px-4 py-3">Excerpt</th>
+                {# <th scope="col" class="text-left text-xs font-semibold tracking-wider text-gray-600 uppercase px-4 py-3">Tags</th> #}
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              {% for post in postslist | reverse %}
+                {% set cleanTags = (post.data.tags | default([])) | filterTagList %}
+                {% set hasNonBookmarkletTags = false %}
+                {% for t in cleanTags %}
+                  {% if t != 'bookmarklets' %}
+                    {% set hasNonBookmarkletTags = true %}
+                  {% endif %}
+                {% endfor %}
+                {% if not hasNonBookmarkletTags %}
+                <tr class="hover:bg-primary-50 transition-colors ">
+                  <td class="align-top px-4 py-3">
+                    <a href="{{ post.url | url }}" class="hover:text-blue-700 hover:underline font-medium">
+                      {% if post.data.title %}
+                        {{ post.data.title }}
+                      {% else %}
+                        <code>{{ post.url }}</code>
+                      {% endif %}
+                    </a>
+                  </td>
+                  <td class="align-top px-4 py-3 text-gray-600">{{ post.templateContent | excerpt(100) }}</td>
+                  {# <td class="align-top px-4 py-3">
+                    <div class="flex flex-wrap gap-2">
+                      {% for t in cleanTags %}
+                        {% set tagUrl %}/tags/{{ t | slugify }}/{% endset %}
+                        <a data-tag="{{ t }}" href="{{ tagUrl | url }}" class="py-1 px-3 rounded-full uppercase text-xs shadow-xl shadow-blue-100 isolate data-[tag=bookmarklets]:hidden {% tagsmeta t %}">{{ t }}</a>
+                      {% endfor %}
+                    </div>
+                  </td> #}
+                </tr>
+                {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    {% endif %}
   </div>
 
   <script>
@@ -50,22 +144,46 @@
     const components = document.querySelectorAll('[data-component="filterable-table"]');
     components.forEach((root) => {
       const input = root.querySelector('input[data-role="filter-input"]');
-      const rows = Array.from(root.querySelectorAll('tbody tr'));
-      if (!input || rows.length === 0) return;
+      const clearBtn = root.querySelector('[data-role="clear-filter"]');
+      const sections = Array.from(root.querySelectorAll('[data-role="tag-section"]'));
+      const allRows = Array.from(root.querySelectorAll('tbody tr'));
+      if (!input || allRows.length === 0) return;
 
       const normalize = (value) => value.toLowerCase();
       const getRowText = (row) => normalize(row.textContent || '');
-      const rowToText = new Map(rows.map((r) => [r, getRowText(r)]));
+      const rowToText = new Map(allRows.map((r) => [r, getRowText(r)]));
+
+      const updateClearVisibility = () => {
+        if (!clearBtn) return;
+        clearBtn.style.visibility = input.value.trim() ? 'visible' : 'hidden';
+      };
 
       const filter = (query) => {
         const q = normalize(query.trim());
-        rows.forEach((row) => {
-          const hay = rowToText.get(row) || '';
-          row.style.display = q === '' || hay.includes(q) ? '' : 'none';
+        sections.forEach((section) => {
+          const rows = Array.from(section.querySelectorAll('tbody tr'));
+          let anyVisible = false;
+          rows.forEach((row) => {
+            const hay = rowToText.get(row) || '';
+            const visible = q === '' || hay.includes(q);
+            row.style.display = visible ? '' : 'none';
+            if (visible) anyVisible = true;
+          });
+          section.style.display = anyVisible ? '' : 'none';
         });
+        updateClearVisibility();
       };
 
       input.addEventListener('input', (e) => filter(e.target.value));
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          input.value = '';
+          filter('');
+          input.focus();
+        });
+      }
+
+      updateClearVisibility();
     });
   })();
   </script>
