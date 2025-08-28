@@ -12,8 +12,8 @@ featured_image: /img/bm.png
 Bookmarklet Maker is a powerful tool that enables you to create your own custom bookmarklets, allowing you to enhance your productivity and streamline your workflow.
 {% endrenderTemplate %}
 
-<script src="/js/alpine.min.js" defer></script>
-{# <script src="/js/bookmarkletmaker.min.js" defer></script> #}
+<script src="/js/alpine.min.js?v={{ build.cacheBuster }}" defer></script>
+{# <script src="/js/bookmarkletmaker.min.js?v={{ build.cacheBuster }}" defer></script> #}
 <script>
   {% include 'src/public/js/bookmarkletmaker.min.js' %}
 </script>
