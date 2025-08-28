@@ -1,0 +1,73 @@
+{# use it like this
+	{% set postslist = collections.posts | head(-3) %}
+	{% include "components/postslist.njk" %}
+ #}
+<section class="max-w-6xl container my-10 mx-auto px-5" data-component="filterable-table">
+
+  <div class="flex items-center gap-3">
+    <label for="" class="sr-only">Search</label>
+    <input type="text" data-role="filter-input" placeholder="Search bookmarklets by title, tags, or excerpt" class="w-full md:w-1/2 rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200" />
+  </div>
+
+  <div class="mt-6 overflow-x-auto border border-gray-200 rounded-lg">
+    <table class="min-w-full table-auto">
+      <thead class="bg-gray-50">
+        <tr>
+          <th scope="col" class="text-left text-xs font-semibold tracking-wider text-gray-600 uppercase px-4 py-3">Title</th>
+          <th scope="col" class="text-left text-xs font-semibold tracking-wider text-gray-600 uppercase px-4 py-3">Tags</th>
+          <th scope="col" class="text-left text-xs font-semibold tracking-wider text-gray-600 uppercase px-4 py-3">Excerpt</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100">
+        {% for post in postslist | reverse %}
+        <tr class="hover:bg-gray-50">
+          <td class="align-top px-4 py-3">
+            <a href="{{ post.url | url }}" class="text-blue-700 hover:underline font-medium">
+              {% if post.data.title %}
+                {{ post.data.title }}
+              {% else %}
+                <code>{{ post.url }}</code>
+              {% endif %}
+            </a>
+          </td>
+          <td class="align-top px-4 py-3">
+            <div class="flex flex-wrap gap-2">
+              {% for tag in post.data.tags | filterTagList %}
+                {% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+                <a data-tag="{{ tag }}" href="{{ tagUrl | url }}" class="py-1 px-3 rounded-full uppercase text-xs shadow-xl shadow-blue-100 isolate data-[tag=bookmarklets]:hidden {% tagsmeta tag %}">{{ tag }}</a>
+              {% endfor %}
+            </div>
+          </td>
+          <td class="align-top px-4 py-3 text-gray-600">{{ post.templateContent | excerpt(100) }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+  (() => {
+    const components = document.querySelectorAll('[data-component="filterable-table"]');
+    components.forEach((root) => {
+      const input = root.querySelector('input[data-role="filter-input"]');
+      const rows = Array.from(root.querySelectorAll('tbody tr'));
+      if (!input || rows.length === 0) return;
+
+      const normalize = (value) => value.toLowerCase();
+      const getRowText = (row) => normalize(row.textContent || '');
+      const rowToText = new Map(rows.map((r) => [r, getRowText(r)]));
+
+      const filter = (query) => {
+        const q = normalize(query.trim());
+        rows.forEach((row) => {
+          const hay = rowToText.get(row) || '';
+          row.style.display = q === '' || hay.includes(q) ? '' : 'none';
+        });
+      };
+
+      input.addEventListener('input', (e) => filter(e.target.value));
+    });
+  })();
+  </script>
+
+</section>

@@ -5,7 +5,7 @@ date: 2023-03-31
 tags:
     - How To
     - Tool
-featured_image: /img/open-graph.png
+featured_image: /img/bm.png
 ---
 
 {% renderTemplate "md" %}

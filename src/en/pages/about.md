@@ -1,12 +1,12 @@
 ---
 title: About Us
 # date: 2022-01-26
-eleventyNavigation:
+---
+{# eleventyNavigation:
   parent: primary
   key: about
   title: About
-  order: 3
----
+  order: 3 #}
 
 [{{metadata.title}}]({{metadata.url}}) is one place for all your bookmarklets need,
 

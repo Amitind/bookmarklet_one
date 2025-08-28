@@ -4,7 +4,7 @@ description: "A comprehensive guide to creating bookmarklets - learn how to writ
 date: 2023-01-25
 tags:
   - How To
-featured_image: /img/open-graph.png
+featured_image: /img/cbm.png
 custom_class: "prose"
 ---
 

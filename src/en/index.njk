@@ -11,32 +11,54 @@ permalink: "/"
 {%- block content %}
 
 	<!-- Main Start -->
-	{% include "partials/hero.njk" %}
+	{# {% include "partials/hero.njk" %} #}
 
 	<article
 class="max-w-6xl mx-auto "
 >
-		<div class="main-container">
-			{# //TODO: update content here #}
-		</div>
+			<section class="px-5 py-14 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+				<div>
+					<h2 class="text-2xl font-bold text-gray-800">
+						Bookmark + JavaScript  = Bookmarklet
+						{# What is a Bookmarklet? #}
+					</h2>
+					
+					{# <p> <mark> Bookmark </mark>+<mark> JavaScript </mark>=<mark> Bookmarklet</mark></p> #}
+					<p class="mt-3 text-gray-600">
+						A bookmarklet is a tiny piece of JavaScript saved as a browser bookmark. Click it on any page to run a helpful action instantly — no extensions required.</p>
+					<div class="mt-6 flex flex-wrap gap-3">
+						<a href="/what-are-bookmarklets/" class="inline-flex items-center rounded-md bg-gray-600 px-4 py-2 text-white hover:bg-primary-700">More about Bookmarklet?</a>
+						<a href="/bookmarklet-maker/" class="inline-flex items-center border text-gray-700 rounded-md hover:bg-primary-700 px-4 py-2 hover:text-white hover:bg-black/90">Create bookmarklet</a>
+					</div>
+				</div>
+				<div class="rounded-lg border border-dashed border-gray-200 p-5  hover:bg-primary-50 transition-colors duration-300 bg-white">
+					<h3 class="font-semibold text-gray-700">Why bookmarklets?</h3>
+					<ul class="mt-3 list-disc list-inside text-gray-700 space-y-1">
+						<li>No installs, permissions, or background usage</li>
+						<li>Works across browsers and devices</li>
+						<li>Run helpful JavaScript functions on the go</li>
+					</ul>
+				</div>
+			</section>
 
 	</article>
 	<!-- Main End -->
-	<div class="max-w-6xl container my-10 md:mx-auto px-5 flex items-center justify-between">
-		<h2 class="text-2xl sm:text-3xl md:text-left text-center font-bold">Latest Blog Posts</h2>
-		<a href="/blog/" class="text-blue-500">View All</a>
+<section class="space-y-8 px-4 py-8">
+	<div class="max-w-6xl container md:mx-auto flex items-center justify-between">
+		<h2 class="text-xl md:text-left text-center ">Latest Articles</h2>
+		<a href="/blog/" class="text-xs px-2 hover:bg-bg-500 py-2 hover:text-white transition-colors duration-300">View All</a>
 
 	</div>
 	{% set postslist = collections.posts | head(-3) %}
 	{% include "components/postslist.njk" %}
+</section>
 
-	<div class="max-w-6xl container my-10 md:mx-auto px-5 flex items-center justify-between">
-		<h2 class="text-2xl sm:text-3xl md:text-left text-center font-bold">All Bookmarklets</h2>
-		{# link to bookmarklet page #}
-		<a href="/bm/" class="text-blue-500">View All</a>
+	<div class="max-w-6xl container md:mx-auto flex items-center justify-between">
+		<h2 class="text-xl md:text-left text-center ">Browse Bookmarklets</h2>
+		<a href="/bm/" class="text-xs px-2 hover:bg-bg-500 py-2 hover:text-white transition-colors duration-300">View All</a>
 	</div>
-	{% set postslist = collections.bookmarklets | head(-3) %}
-	{% include "components/postslist.njk" %}
+	{% set postslist = collections.bookmarklets %}
+	{% include "components/bookmarkletlist.njk" %}
 
 	{# end of content block #}
 

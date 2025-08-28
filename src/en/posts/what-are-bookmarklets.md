@@ -5,7 +5,7 @@ date: 2023-01-24
 tags:
   - How To
 layout: layouts/post.njk
-featured_image: /img/open-graph.png
+featured_image: /img/wbm.png
 ---
 
 :::alert

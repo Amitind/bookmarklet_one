@@ -2,38 +2,39 @@
 	{% set postslist = collections.posts | head(-3) %}
 	{% include "components/postslist.njk" %}
  #}
-<section class="max-w-6xl postlist container my-10 mx-auto px-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<section class="max-w-6xl postlist container mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
   {% for post in postslist | reverse %}
-  <div class="relative overflow-hidden rounded-lg shadow-xl shadow-gray-100 text-ellipsis  border-2 border-gray-100">
-        <a href="{{ post.url | url }}" class="inset-0 absolute" ></a>
-        {% if post.data.featured_image %}
-          {% image post.data.featured_image, imgclass="object-cover w-full" %}
-        {% else %}
-          {% image "./src/img/open-graph.png", imgclass="object-cover w-full" %}
-        {% endif %}
-
-        <div class="p-6">
+  <div class="relative overflow-hidden rounded-lg group shadow-gray-100 text-ellipsis  border-2 border-gray-100 bg-white">
+    {% if post.data.featured_image %}
+    {# set class #}
+    {% set imgclass="object-cover w-full group-hover:scale-105 transition-all duration-300" %}  
+    {% image post.data.featured_image, imgclass=imgclass %}
+    {% else %}
+    {% image "./src/img/open-graph.png", imgclass=imgclass %}
+    {% endif %}
+    
+    <div class="p-4 relative">
+          <a href="{{ post.url | url }}" class="inset-0 absolute" ></a>
           <div class="text-ellipsis overflow-hidden">
 
             {# add tags list #}
-            <div class="mb-6 z-10 gap-2 flex flex-wrap">
+            {# <div class="mb-6 z-10 gap-2 flex flex-wrap">
               {% for tag in post.data.tags | filterTagList %}
                 {% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-                <a href="{{ tagUrl | url }}" class="py-1 px-3 rounded-full uppercase text-xs shadow-xl shadow-blue-100 isolate {% tagsmeta tag %}">{{ tag }}</a>
-                {# <span class="py-1 px-3 rounded-full uppercase text-xs shadow-xl shadow-blue-100 {% tagsmeta tag %}">{{ tag }}</span> #}
+                <a href="{{ tagUrl | url }}" class="py-1 px-3 rounded-full uppercase text-xs  isolate {% tagsmeta tag %}">{{ tag }}</a>
               {% endfor %}
-            </div>
+            </div> #}
 
             {# heading and excerpt #}
-            <h2 class="block text-2xl font-bold text-gray-700">
+            <h2 class="block  text-gray-700">
               {% if post.data.title %}
                 {{ post.data.title }}
               {% else %}
                 <code>{{ post.url }}</code>
               {% endif %}
             </h2>
-            <p class="mt-2 text-gray-500">{{ post.templateContent | excerpt(100) }}</p>
+            <p class="mt-2 text-xs text-gray-500">{{ post.templateContent | excerpt(100) }}</p>
           </div>
 
         </div>
