@@ -9,13 +9,15 @@
     {% if post.data.featured_image %}
     {# set class #}
     {% set imgclass="object-cover w-full group-hover:scale-105 transition-all duration-300" %}  
-    {% image post.data.featured_image, imgclass=imgclass %}
+    {% image post.data.featured_image, imgclass=imgclass, widths=['400'] %}
     {% else %}
-    {% image "./src/img/open-graph.png", imgclass=imgclass %}
+    {% image "./src/img/open-graph.png", imgclass=imgclass, widths=['400'] %}
     {% endif %}
     
     <div class="p-4 relative">
-          <a href="{{ post.url | url }}" class="inset-0 absolute" ></a>
+          <a href="{{ post.url | url }}" class="inset-0 absolute" aria-label="{{ post.data.title }}">
+            <span class="sr-only">{{ post.data.title }}</span>
+          </a>
           <div class="text-ellipsis overflow-hidden">
 
             {# add tags list #}
