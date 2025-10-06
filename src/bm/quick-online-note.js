@@ -1,1 +1,2 @@
-window.open('https://onlinenotes.net/editorjs/?ref=bookmarklet', 'tab');
+window.open('https://onlinenotes.net/?ref=bookmarklet', 'tab');
+
