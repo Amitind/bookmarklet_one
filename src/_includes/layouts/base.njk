@@ -5,7 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Primary Meta Tags -->
-    <title>{{ title or metadata.title }} | {{ metadata.title }}</title>
+    <title>
+      {%- if page.url == "/" -%}
+        {{ metadata.title }} — {{ metadata.subtitle }}
+      {%- else -%}
+        {{ title }} | {{ metadata.title }}
+      {%- endif -%}
+    </title>
     <meta name="description" content="{{ description or metadata.description }}">
     <meta name="generator" content="{{ eleventy.generator }}">
 
@@ -105,7 +111,7 @@ now you can use window.dataLayer = window.dataLayer || [] to update them to data
 	{%- block after_footer %}{%- endblock %}
 
     <script >{% include 'src/public/js/main.min.js' %}</script>
-    <link rel="stylesheet" href="{{ '/css/prism-base16-monokai.dark.css' | url }}?v={{ build.cacheBuster }}">
+    <link rel="stylesheet" href="{{ '/css/prism-base16-monokai.dark.css' | url }}?v={{ build.cacheBuster }}" media="print" onload="this.media='all'">
     {# prism-diff.css not included in above file #}
     {# <link rel="stylesheet" href="{{ '/css/prism-diff.css' | url }}"> #}
 
