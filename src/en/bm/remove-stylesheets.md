@@ -1,6 +1,7 @@
 ---
 title: Remove Stylesheets
 description: 'Instantly remove CSS styles from any webpage to view clean, unstyled content'
+tags: ['Web Dev']
 featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---

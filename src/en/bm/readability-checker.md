@@ -1,6 +1,7 @@
 ---
 title: Content Readability Checker
 description: "Analyze text readability using NCSU's comprehensive readability analysis tool"
+tags: ['seo', 'tool']
 featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---

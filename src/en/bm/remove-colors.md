@@ -1,6 +1,7 @@
 ---
 title: Remove Colors
 description: 'Instantly remove all background and text colors from any webpage for better readability and accessibility testing'
+tags: ['accessibility', 'Web Dev']
 featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---

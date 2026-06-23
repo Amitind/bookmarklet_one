@@ -1,6 +1,7 @@
 ---
 title: Remove Images
 description: 'Instantly remove all images from any webpage for faster loading and distraction-free reading'
+tags: ['productivity']
 featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---

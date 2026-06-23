@@ -1,6 +1,7 @@
 ---
 title: Word Counter
 description: "Quickly count words and characters in any selected text on a webpage"
+tags: ['tool', 'productivity']
 featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---

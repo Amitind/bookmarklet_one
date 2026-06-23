@@ -110,7 +110,21 @@
 			"class": "bg-emerald-700 text-white",
 			"icon": "",
 			"description": ""
+		},
+		"ai": {
+			"class": "bg-indigo-700 text-white",
+			"icon": "",
+			"description": ""
+		},
+		"accessibility": {
+			"class": "bg-teal-600 text-white",
+			"icon": "",
+			"description": ""
+		},
+		"privacy": {
+			"class": "bg-rose-700 text-white",
+			"icon": "",
+			"description": ""
 		}
-		
 	}
 }

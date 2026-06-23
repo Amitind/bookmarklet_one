@@ -1,6 +1,7 @@
 ---
 title: Convert Links to Hrefs
 description: "Convert all links on a webpage to naked URLs for quick SEO analysis"
+tags: ['seo']
 featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---

@@ -1,6 +1,7 @@
 ---
 title: Remove Embed iframe
 description: 'Instantly remove embedded iframes from any webpage to improve loading speed and reduce distractions'
+tags: ['productivity']
 featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---

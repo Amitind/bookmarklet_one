@@ -1,6 +1,7 @@
 ---
 title: Delete Cookies
 description: 'A powerful bookmarklet to instantly delete all cookies from the current website. Enhance your privacy and troubleshoot website issues with one click.'
+tags: ['privacy']
 featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---

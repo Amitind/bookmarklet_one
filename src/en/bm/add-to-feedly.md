@@ -1,6 +1,7 @@
 ---
 title: Add to Feedly
 description: "Instantly add any website's RSS feed to your Feedly account with a single click"
+tags: ['productivity']
 featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---

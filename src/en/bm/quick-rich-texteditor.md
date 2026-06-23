@@ -1,6 +1,7 @@
 ---
 title: Quick Rich Texteditor
 description: 'Instantly open a feature-rich text editor in your browser with formatting tools'
+tags: ['tool', 'productivity']
 featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---

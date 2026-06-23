@@ -1,6 +1,7 @@
 ---
 title: Highlight Headings
 description: "Visualize and analyze heading structure on any webpage with color-coded highlights"
+tags: ['seo']
 featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---

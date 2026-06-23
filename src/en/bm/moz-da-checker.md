@@ -1,6 +1,7 @@
 ---
 title: Moz DA Checker
 description: "Quickly check Domain Authority, spam score, and backlink profile of any website using Moz's domain analysis tool"
+tags: ['seo']
 featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---

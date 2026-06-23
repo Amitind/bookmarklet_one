@@ -1,6 +1,7 @@
 ---
 title: Post to Hackernews
 description: 'Share any webpage instantly to Hacker News with a single click'
+tags: ['productivity']
 featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---

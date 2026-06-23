@@ -1,6 +1,7 @@
 ---
 title: Google Trends Checker
 description: "Instantly check brand popularity and search trends for any website using Google Trends"
+tags: ['seo', 'tool']
 featured_image: /img/open-graph.png
 custom_class: 'prose'
 ---
